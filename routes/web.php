@@ -110,10 +110,6 @@ Route::prefix('student')
         // muestra el perfil publico de una empresa
         Route::get('/companies/{id}', [StudentVacancyController::class, 'company'])
             ->name('companies.show');
-        Route::get('/companies/{id}/edit', [AdminController::class, 'editCompany'])
-            ->where('id', '[a-f0-9]{24}')->name('companies.edit');
-        Route::put('/companies/{id}', [AdminController::class, 'updateCompany'])
-            ->where('id', '[a-f0-9]{24}')->name('companies.update');
     });
 
 // ------- rutas de la empresa -------
