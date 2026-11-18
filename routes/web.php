@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\CompanyMembershipController;
+use App\Http\Controllers\CompanyRatingsController;
 use App\Http\Controllers\CompanyVacancyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentVacancyController;
@@ -174,7 +175,7 @@ Route::prefix('company')
         )->name('applications.status');
 
         // muestra la pagina de valoraciones
-        Route::view('/ratings', 'company.ratings')
+        Route::get('/ratings', [CompanyRatingsController::class, 'index'])
             ->name('ratings');
 
         // ------- membresia -------
@@ -230,6 +231,11 @@ Route::prefix('admin')
             ->where('document', 'cv|kardex')
             ->name('students.document');
 
+        Route::get('/students/{id}/edit', [AdminController::class, 'editStudent'])
+            ->where('id', '[a-f0-9]{24}')->name('students.edit');
+        Route::put('/students/{id}', [AdminController::class, 'updateStudent'])
+            ->where('id', '[a-f0-9]{24}')->name('students.update');
+
         // ------- empresas -------
 
         // muestra la lista de empresas
@@ -240,6 +246,12 @@ Route::prefix('admin')
         Route::get('/companies/{id}', [AdminController::class, 'company'])
             ->where('id', '[a-f0-9]{24}')
             ->name('companies.show');
+        Route::get('/companies/{id}/edit', [AdminController::class, 'editCompany'])
+            ->where('id', '[a-f0-9]{24}')
+            ->name('companies.edit');
+        Route::put('/companies/{id}', [AdminController::class, 'updateCompany'])
+            ->where('id', '[a-f0-9]{24}')
+            ->name('companies.update');
 
 
     });

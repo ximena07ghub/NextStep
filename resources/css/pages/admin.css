@@ -46,3 +46,8 @@
 .ns-order-history h2 { margin-bottom:15px; }
 @media(max-width:850px) { .admin-shell{grid-template-columns:1fr}.admin-navigation{padding-top:16px}.admin-sidebar{flex-direction:row;flex-wrap:wrap;gap:6px;padding:12px;border-radius:0 30px 30px 0}.admin-sidebar a{padding:10px}.admin-main{padding:25px 20px 40px}.admin-main h1{font-size:32px}.admin-header{padding:22px 20px}.admin-header__actions{gap:10px;font-size:13px} }
 @media(max-width:520px) { .admin-header{flex-wrap:wrap}.admin-summary{grid-template-columns:1fr;gap:10px}.admin-stat{padding:16px}.admin-stat strong{font-size:28px}.admin-form,.admin-details{grid-template-columns:1fr}.admin-table{font-size:13px}.admin-toolbar input,.admin-form input,.admin-form select,.admin-form textarea{font-size:16px}.admin-main{padding:24px 14px}.admin-sidebar a{font-size:13px;gap:6px}.admin-sidebar img{width:20px;height:20px} }
+
+.company-ratings__empty { padding: 24px; color: #5d6870; background: #f5f8f7; border-radius: 16px; width: 100%; }
+.company-ratings__reviews-header form { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.company-ratings__reviews-header select { padding: 9px; border: 1px solid #d6dce3; border-radius: 10px; }
+@media(max-width:650px) { .company-ratings__reviews-header { flex-direction: column; align-items: flex-start; gap: 16px; } }
