@@ -188,6 +188,9 @@ Route::prefix('company')
         Route::get('/membership/change', [CompanyMembershipController::class, 'catalog'])
             ->name('membership.change');
 
+        Route::post('/membership/checkout', [CompanyMembershipController::class, 'checkout'])
+            ->middleware('throttle:5,1')->name('membership.checkout');
+
         // ------- perfil de la empresa -------
 
         // muestra el perfil
