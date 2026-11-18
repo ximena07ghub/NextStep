@@ -728,3 +728,25 @@
 .rating-modal__overlay[hidden] {
     display: none !important;
 }
+/* pestaña de valoraciones y adaptación a pantallas pequeñas */
+.company-public-profile__reviews-list { width: 100%; max-width: 900px; margin: 36px auto 0; display: grid; gap: 18px; }
+.company-public-profile__reviews-list[hidden] { display: none; }
+.company-public-profile__review-card { padding: 20px; border: 1px solid #dedede; border-radius: 16px; overflow-wrap: anywhere; }
+.company-public-profile__review-card h3 { margin: 8px 0; }
+.company-public-profile__review-card p { line-height: 1.5; }
+.company-public-profile__review-card small { color: #666; }
+.company-public-profile__empty { grid-column: 1 / -1; text-align: center; color: #555; }
+@media (max-width: 1300px) {
+    .company-public-profile { max-width: 100%; padding: 35px 20px 60px; }
+    .company-public-profile__top { width: 100%; }
+    .company-public-profile__header { gap: 24px; }
+    .company-public-profile__identity-info, .company-public-profile__name { width: auto; max-width: 100%; overflow-wrap: anywhere; }
+    .company-public-profile__vacancies { grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 410px)); gap: 24px; }
+}
+@media (max-width: 600px) {
+    .company-public-profile__identity { flex-wrap: wrap; }
+    .company-public-profile__name { font-size: 32px; }
+    .company-public-profile__tabs { flex-wrap: wrap; gap: 8px; }
+    .company-public-profile__tab { font-size: 18px; }
+    .company-public-profile__logo { width: 100px; height: 100px; }
+}
