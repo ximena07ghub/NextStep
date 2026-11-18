@@ -108,3 +108,65 @@
     }
 
 }
+
+/* organiza cada vacante con sus acciones */
+.company-vacancies {
+    width: 100%;
+    max-width: 1100px;
+    gap: 22px;
+}
+
+.company-vacancies__grid {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    justify-content: start;
+}
+
+.company-vacancies__item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+    width: 100%;
+}
+
+.company-vacancies__item .vacancy-card {
+    width: 100%;
+    min-width: 0;
+}
+
+.company-vacancies__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 40px;
+}
+
+.company-vacancies__actions form {
+    margin: 0;
+}
+
+.company-vacancies__empty {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 1150px) {
+    .company-vacancies__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .company-vacancies__grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    .company-vacancies__grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

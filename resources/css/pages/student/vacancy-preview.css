@@ -333,3 +333,22 @@
     .vacancy-preview__employment-label { width: auto; }
     .vacancy-preview__benefit { white-space: normal; }
 }
+
+/* mantiene visible la vacante seleccionada */
+@media (min-width: 1101px) {
+    .student-home__vacancy-area .vacancy-preview {
+        position: sticky;
+        top: 20px;
+        width: 100%;
+    }
+    .student-home__vacancy-area .vacancy-preview__body {
+        width: 100%;
+        padding: 32px;
+    }
+    .student-home__vacancy-area .vacancy-preview__main-info,
+    .student-home__vacancy-area .vacancy-preview__title,
+    .student-home__vacancy-area .vacancy-preview__benefits {
+        width: auto;
+        max-width: 100%;
+    }
+}

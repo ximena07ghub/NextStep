@@ -12,10 +12,10 @@ use App\Http\Controllers\VacancyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-// Stripe envía el aviso de pago sin iniciar sesión en NextStep.
+// stripe envía el aviso de pago sin iniciar sesión en nextstep.
 Route::post('/stripe/webhook', [StripeWebhookController::class, 'handle']);
 
-// Postman utiliza cookies de sesión y X-CSRF-TOKEN, igual que los formularios web.
+// postman utiliza cookies de sesión y x-csrf-token, igual que los formularios web.
 Route::middleware('web')->group(function () {
     Route::get('/session', function (Request $request) {
         $user = $request->user('web');
