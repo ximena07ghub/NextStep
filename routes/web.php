@@ -236,6 +236,9 @@ Route::prefix('admin')
         Route::put('/students/{id}', [AdminController::class, 'updateStudent'])
             ->where('id', '[a-f0-9]{24}')->name('students.update');
 
+        Route::delete('/students/{id}', [AdminController::class, 'deleteStudent'])
+            ->where('id', '[a-f0-9]{24}')->name('students.destroy');
+
         // ------- empresas -------
 
         // muestra la lista de empresas
@@ -252,7 +255,8 @@ Route::prefix('admin')
         Route::put('/companies/{id}', [AdminController::class, 'updateCompany'])
             ->where('id', '[a-f0-9]{24}')
             ->name('companies.update');
-
+        Route::delete('/companies/{id}', [AdminController::class, 'deleteCompany'])
+            ->where('id', '[a-f0-9]{24}')->name('companies.destroy');
 
     });
 
