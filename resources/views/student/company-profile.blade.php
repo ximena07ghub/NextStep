@@ -84,12 +84,12 @@
 
         <button
             type="button"
-            class="company-public-profile__tab company-public-profile__tab--active"
+            class="company-public-profile__tab {{ $errors->any() || session("success") ? "" : "company-public-profile__tab--active" }}"
             data-profile-tab="vacancies"
         >
             Vacantes disponibles
         </button>
-        <button type="button" class="company-public-profile__tab" data-profile-tab="reviews" aria-selected="false">Valoraciones ({{ $reviews->count() }})</button>
+        <button type="button" class="company-public-profile__tab {{ $errors->any() || session("success") ? "company-public-profile__tab--active" : "" }}" data-profile-tab="reviews" aria-selected="false">Valoraciones ({{ $reviews->count() }})</button>
 
     </div>
 
@@ -98,7 +98,7 @@
 
     <section
         class="company-public-profile__vacancies"
-        data-profile-section="vacancies"
+        data-profile-section="vacancies" @if ($errors->any() || session("success")) hidden @endif
     >
 
         @forelse ($vacancies as $vacancy)
@@ -116,8 +116,33 @@
 
     </section>
 
-    <section class="company-public-profile__reviews-list" data-profile-section="reviews" hidden>
+    <section class="company-public-profile__reviews-list" data-profile-section="reviews" @if (!$errors->any() && !session("success")) hidden @endif>
         <h2 class="company-public-profile__section-title">Valoraciones de estudiantes</h2>
+        @if (session('success'))<p role="status">{{ session('success') }}</p>@endif
+        @if ($errors->any())
+            <div role="alert"><ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul></div>
+        @endif
+        @if (!$alreadyReviewed)
+            <form class="company-public-profile__review-form" method="POST" action="{{ route('student.companies.reviews.store', $company['id']) }}">
+                @csrf
+                <h3>Calificar esta empresa</h3>
+                <p>Comparte una experiencia real de manera respetuosa.</p>
+                <label for="company-rating">Calificación</label>
+                <select id="company-rating" name="rating" required>
+                    <option value="">Selecciona de 1 a 5 estrellas</option>
+                    @for ($score = 1; $score <= 5; $score++)
+                        <option value="{{ $score }}" @selected(old('rating') == $score)>{{ $score }} {{ $score == 1 ? 'estrella' : 'estrellas' }}</option>
+                    @endfor
+                </select>
+                <label for="review-title">Título</label>
+                <input id="review-title" name="review_title" maxlength="100" value="{{ old('review_title') }}" required>
+                <label for="review-description">Tu experiencia</label>
+                <textarea id="review-description" name="review_description" rows="5" maxlength="1500" required>{{ old('review_description') }}</textarea>
+                <button type="submit">Publicar valoración</button>
+            </form>
+        @else
+            <p role="status">Ya publicaste una valoración para esta empresa.</p>
+        @endif
         @forelse ($reviews as $review)
             <article class="company-public-profile__review-card">
                 <p aria-label="{{ (int) $review->rating }} de 5 estrellas">{{ str_repeat('★', (int) $review->rating) }}{{ str_repeat('☆', max(0, 5 - (int) $review->rating)) }}</p>

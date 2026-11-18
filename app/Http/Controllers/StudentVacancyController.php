@@ -112,7 +112,8 @@ class StudentVacancyController extends Controller
             ->latest()->get()->map(fn (Vacancy $item) => $item->card($record));
         $reviews = CompanyReview::where('company_user_id', $id)->latest()->get();
         $averageRating = $reviews->count() ? round($reviews->avg('rating'), 1) : null;
+        $alreadyReviewed = $reviews->contains('student_user_id', $studentId);
 
-        return view('student.company-profile', compact('company', 'vacancies', 'reviews', 'averageRating'));
+        return view('student.company-profile', compact('company', 'vacancies', 'reviews', 'averageRating', 'alreadyReviewed'));
     }
 }

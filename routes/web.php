@@ -9,6 +9,7 @@ use App\Http\Controllers\CompanyRatingsController;
 use App\Http\Controllers\CompanyVacancyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentVacancyController;
+use App\Http\Controllers\StudentCompanyReviewController;
 use Illuminate\Support\Facades\Route;
 
 // ------- paginas publicas -------
@@ -106,6 +107,8 @@ Route::prefix('student')
             '/vacancies/{id}/bookmark',
             [BookmarkController::class, 'destroy']
         )->name('bookmarks.destroy');
+
+        Route::post('/companies/{id}/reviews', [StudentCompanyReviewController::class, 'store'])->middleware('throttle:5,1')->where('id', '[a-f0-9]{24}')->name('companies.reviews.store');
 
         // muestra el perfil publico de una empresa
         Route::get('/companies/{id}', [StudentVacancyController::class, 'company'])
