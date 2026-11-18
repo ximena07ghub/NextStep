@@ -6,7 +6,6 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\CompanyMembershipController;
 use App\Http\Controllers\CompanyVacancyController;
-use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentVacancyController;
 use Illuminate\Support\Facades\Route;
@@ -242,63 +241,6 @@ Route::prefix('admin')
             ->where('id', '[a-f0-9]{24}')
             ->name('companies.show');
 
-        // ------- membresias -------
 
-        // muestra los planes
-        Route::get('/memberships', [MembershipController::class, 'index'])
-            ->name('memberships.index');
-
-        // muestra el formulario para crear un plan
-        Route::get('/memberships/create', [MembershipController::class, 'create'])
-            ->name('memberships.create');
-
-        // guarda el nuevo plan
-        Route::post('/memberships', [MembershipController::class, 'store'])
-            ->name('memberships.store');
-
-        // muestra el formulario para editar un plan
-        Route::get('/memberships/{id}/edit', [MembershipController::class, 'edit'])
-            ->where('id', '[a-f0-9]{24}')
-            ->name('memberships.edit');
-
-        // guarda los cambios del plan
-        Route::put('/memberships/{id}', [MembershipController::class, 'update'])
-            ->where('id', '[a-f0-9]{24}')
-            ->name('memberships.update');
-
-        // desactiva un plan
-        Route::delete('/memberships/{id}', [MembershipController::class, 'destroy'])
-            ->where('id', '[a-f0-9]{24}')
-            ->name('memberships.destroy');
-
-        // ------- pagos -------
-
-        // muestra el historial de pagos
-        Route::get('/payments', [AdminController::class, 'payments'])
-            ->name('payments.index');
-
-        // muestra un pago por su id
-        Route::get('/payments/{id}', [AdminController::class, 'payment'])
-            ->where('id', '[a-f0-9]{24}')
-            ->name('payments.show');
     });
 
-// ------- solicitudes de membresia -------
-
-// estas acciones son para la empresa con sesion
-Route::middleware(['auth:web', 'role:company'])->group(function () {
-
-    // registra el plan seleccionado
-    Route::post(
-        '/company/membership/orders',
-        [CompanyMembershipController::class, 'store']
-    )->name('company.membership.orders.store');
-
-    // cancela una solicitud que sigue pendiente
-    Route::patch(
-        '/company/membership/orders/{id}/cancel',
-        [CompanyMembershipController::class, 'cancel']
-    )
-        ->where('id', '[a-f0-9]{24}')
-        ->name('company.membership.orders.cancel');
-});

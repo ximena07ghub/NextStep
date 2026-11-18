@@ -36,8 +36,9 @@
     cursor: pointer;
 }
 .ns-catalog__plan:has(input:checked) {
-    border-color: #168782;
-    background: #f0faf7;
+    border-color: #83bfb2;
+    background: #f8fcfa;
+    box-shadow: 0 0 0 1px #b7d8cf;
 }
 .ns-catalog__plan:focus-within { outline: 3px solid #168782; outline-offset: 3px; }
 .ns-catalog__choice { display: flex; align-items: center; gap: 10px; color: #333; font-weight: 700; }
@@ -48,6 +49,7 @@
 .ns-catalog__limit { color: #444; font-weight: 700; }
 .ns-catalog__benefits { padding-left: 22px; line-height: 1.6; }
 .ns-catalog__empty { grid-column: 1/-1; }
+.ns-catalog__notice { margin: 28px auto 0; padding: 18px 20px; max-width: 780px; border-radius: 14px; background: #f6f8f8; color: #43534f; line-height: 1.6; }
 .ns-catalog__checkout {
     display: flex;
     flex-direction: column;
