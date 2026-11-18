@@ -85,11 +85,11 @@
         <button
             type="button"
             class="company-public-profile__tab {{ $errors->any() || session("success") ? "" : "company-public-profile__tab--active" }}"
-            data-profile-tab="vacancies"
+            data-profile-tab="vacancies" aria-selected="{{ $errors->any() || session("success") ? "false" : "true" }}"
         >
             Vacantes disponibles
         </button>
-        <button type="button" class="company-public-profile__tab {{ $errors->any() || session("success") ? "company-public-profile__tab--active" : "" }}" data-profile-tab="reviews" aria-selected="false">Valoraciones ({{ $reviews->count() }})</button>
+        <button type="button" class="company-public-profile__tab {{ $errors->any() || session("success") ? "company-public-profile__tab--active" : "" }}" data-profile-tab="reviews" aria-selected="{{ $errors->any() || session("success") ? "true" : "false" }}">Valoraciones ({{ $reviews->count() }})</button>
 
     </div>
 
@@ -135,9 +135,10 @@
                     @endfor
                 </select>
                 <label for="review-title">Título</label>
-                <input id="review-title" name="review_title" maxlength="100" value="{{ old('review_title') }}" required>
+                <input id="review-title" name="review_title" minlength="3" maxlength="100" value="{{ old('review_title') }}" required>
                 <label for="review-description">Tu experiencia</label>
-                <textarea id="review-description" name="review_description" rows="5" maxlength="1500" required>{{ old('review_description') }}</textarea>
+                <textarea id="review-description" name="review_description" rows="5" minlength="10" maxlength="1500" required>{{ old('review_description') }}</textarea>
+                <p>Escribe al menos 10 caracteres sobre tu experiencia.</p>
                 <button type="submit">Publicar valoración</button>
             </form>
         @else
