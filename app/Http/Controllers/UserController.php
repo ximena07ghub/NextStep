@@ -39,7 +39,7 @@ class UserController extends Controller
     // obtener todos los usuarios
     public function index()
     {
-        return response()->json(User::all(), 200);
+        return response()->json(User::paginate(20), 200);
     }
 
     // obtener un solo usuario por id
@@ -74,7 +74,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        $user->delete();
+        app(\App\Services\AccountDeletionService::class)->delete($user);
         
         return response()->json(['message' => 'Usuario eliminado'], 200);
     }

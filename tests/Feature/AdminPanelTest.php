@@ -15,12 +15,20 @@ uses(TestCase::class);
 beforeEach(function () {
     config(['database.default' => 'mongodb', 'database.connections.mongodb.dsn' => env('TEST_MONGODB_URI', 'mongodb://127.0.0.1:27017'), 'database.connections.mongodb.database' => 'nextstep_admin_test']);
     DB::purge('mongodb');
+    // impide borrar una base distinta de la de pruebas
+    if (app()->environment() !== 'testing' || config('database.connections.mongodb.database') !== 'nextstep_admin_test') {
+        throw new \RuntimeException('Las pruebas requieren nextstep_admin_test.');
+    }
     DB::connection('mongodb')->getDatabase()->drop();
     $this->withoutVite();
     $this->admin = User::factory()->create(['first_name' => 'Administradora', 'role' => 'admin']);
 });
 
 afterEach(function () {
+    // impide borrar una base distinta de la de pruebas
+    if (app()->environment() !== 'testing' || config('database.connections.mongodb.database') !== 'nextstep_admin_test') {
+        throw new \RuntimeException('Las pruebas requieren nextstep_admin_test.');
+    }
     DB::connection('mongodb')->getDatabase()->drop();
 });
 
