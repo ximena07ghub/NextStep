@@ -81,6 +81,12 @@
         </a>
 
 
+        {{-- CREAR VACANTE --}}
+        <a href="{{ route('company.vacancies.create') }}" class="company-sidebar__item {{ request()->routeIs('company.vacancies.create') ? 'company-sidebar__item--active' : '' }}" @if(request()->routeIs('company.vacancies.create')) aria-current="page" @endif>
+            <img src="{{ asset('images/Filedash.svg') }}" alt="" class="company-sidebar__icon">
+            <span>Publicar vacante</span>
+        </a>
+
         {{-- VALORACIONES --}}
 
         <a

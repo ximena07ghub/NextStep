@@ -30,9 +30,10 @@
                 </form>
             </article>
         @empty
-            <p class="student-bookmarks__empty">
-                Aún no tienes vacantes guardadas. Explora las oportunidades y guarda las que te interesen.
-            </p>
+            <div class="student-bookmarks__empty" role="status">
+                <p>Aún no tienes vacantes guardadas. Explora las oportunidades y guarda las que te interesen.</p>
+                <a href="{{ route('student.home') }}">Explorar vacantes</a>
+            </div>
         @endforelse
     </div>
 </div>

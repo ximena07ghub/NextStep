@@ -104,9 +104,10 @@
 
         @empty
 
-            <p class="company-applications__empty">
-                Aún no recibes postulaciones.
-            </p>
+            <div class="company-applications__empty" role="status">
+                <p>Aún no recibes postulaciones.</p>
+                <a href="{{ route('company.vacancies.index') }}">Ver mis vacantes</a>
+            </div>
 
         @endforelse
 

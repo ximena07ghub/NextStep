@@ -8,9 +8,9 @@
          TITLE
     ========================================= --}}
 
-    <h1 class="company-vacancies__title">
-        Vacantes publicadas
-    </h1>
+    <h1 class="company-vacancies__title">Vacantes publicadas</h1>
+    <p>Administra tus oportunidades laborales y consulta sus detalles.</p>
+    <p><a class="admin-button admin-button--primary" href="{{ route('company.vacancies.create') }}">Publicar nueva vacante</a></p>
 
 
     {{-- ========================================
@@ -31,7 +31,7 @@
             />
 
         @empty
-            <p>Aún no has publicado vacantes.</p>
+            <div role="status"><p>Aún no has publicado vacantes.</p><a class="admin-button admin-button--primary" href="{{ route('company.vacancies.create') }}">Crear mi primera vacante</a></div>
         @endforelse
 
     </div>
