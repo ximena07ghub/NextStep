@@ -1,0 +1,14 @@
+/* estilos compartidos del panel de empresas */
+.company-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.company-layout__content {
+    flex: 1;
+    min-width: 0;
+}
+.company-sidebar__item[aria-current="page"] {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}

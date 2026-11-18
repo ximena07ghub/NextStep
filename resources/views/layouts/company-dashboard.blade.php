@@ -2,7 +2,7 @@
 
 @section('content')
 
-<main class="company-home">
+<div class="company-home">
 
     <div class="company-home__navigation">
 
@@ -23,6 +23,6 @@
 
     </div>
 
-</main>
+</div>
 
 @endsection
