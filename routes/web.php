@@ -62,7 +62,7 @@ Route::prefix('student')
             ->name('home');
 
         // pagina de vacantes guardadas
-        Route::view('/bookmarks', 'student.bookmarks')
+        Route::get('/bookmarks', [StudentVacancyController::class, 'bookmarks'])
             ->name('bookmarks');
 
         // ------- perfil del estudiante -------

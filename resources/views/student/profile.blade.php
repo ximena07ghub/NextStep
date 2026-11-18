@@ -2,7 +2,7 @@
 
 @section('content')
 
-<main
+<div
     class="student-profile-page"
     data-student-profile-page
 >
@@ -16,63 +16,14 @@
 
     <section class="student-profile-page__applications">
 
-        {{-- ------- vacantes guardadas ------- --}}
-
-        <h1
-            class="student-profile-page__title"
-            id="vacantes-guardadas"
-        >
-            Vacantes guardadas
-        </h1>
-
-        <div class="student-profile-page__saved-grid">
-
-            @forelse ($savedVacancies as $vacancy)
-
-                <div class="student-profile-page__saved-item">
-
-                    {{-- tarjeta que abre el detalle --}}
-                    <x-vacancy-card
-                        :vacancy="$vacancy"
-                        :href="route('student.vacancies.show', [
-                            'id' => $vacancy['id']
-                        ])"
-                    />
-
-                    {{-- boton para quitar la vacante --}}
-                    <form
-                        method="POST"
-                        action="{{ route('student.bookmarks.destroy', $vacancy['id']) }}"
-                    >
-                        @csrf
-                        @method('DELETE')
-
-                        <button
-                            type="submit"
-                            class="student-profile-page__remove-bookmark"
-                        >
-                            Quitar de guardadas
-                        </button>
-                    </form>
-
-                </div>
-
-            @empty
-
-                <p class="student-profile-page__empty">
-                    Aún no has guardado vacantes.
-                </p>
-
-            @endforelse
-
+        <div class="student-profile-page__heading">
+            <h1 class="student-profile-page__title">Mis postulaciones</h1>
+            <a class="student-profile-page__bookmarks" href="{{ route('student.bookmarks') }}">
+                Ver vacantes guardadas
+            </a>
         </div>
 
-
         {{-- ------- postulaciones enviadas ------- --}}
-
-        <h2 class="student-profile-page__subtitle">
-            Mis postulaciones
-        </h2>
 
         <div class="student-profile-page__application-grid">
 
@@ -98,6 +49,6 @@
 
     </section>
 
-</main>
+</div>
 
 @endsection

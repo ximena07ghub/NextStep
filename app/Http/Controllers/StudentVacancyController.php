@@ -33,6 +33,33 @@ class StudentVacancyController extends Controller
         return view('student.index', compact('vacancies'));
     }
 
+    public function bookmarks(Request $request)
+    {
+        $savedVacancies = Bookmark::where(
+            'student_user_id',
+            (string) $request->user()->getKey()
+        )
+            ->latest()
+            ->get()
+            ->map(function (Bookmark $bookmark) {
+                $vacancy = Vacancy::where('_id', $bookmark->vacancy_id)
+                    ->where('status', 'published')
+                    ->first();
+
+                if (!$vacancy) {
+                    return null;
+                }
+
+                $company = User::find($vacancy->company_user_id);
+
+                return $company ? $vacancy->card($company) : null;
+            })
+            ->filter()
+            ->values();
+
+        return view('student.bookmarks', compact('savedVacancies'));
+    }
+
     public function show(Request $request, string $id)
     {
         $record = Vacancy::where('status', 'published')->where('_id', $id)->firstOrFail();

@@ -27,7 +27,19 @@
 
         {{-- Acciones --}}
 
-        <nav class="app-header__actions">
+        <nav class="app-header__actions" aria-label="Navegación principal">
+            @if ($homeRoute === 'student.home')
+                <a
+                    href="{{ route('student.home') }}"
+                    class="app-header__nav-link"
+                    @if(request()->routeIs('student.home', 'student.vacancies.*')) aria-current="page" @endif
+                >Buscar vacantes</a>
+                <a
+                    href="{{ route('student.bookmarks') }}"
+                    class="app-header__nav-link"
+                    @if(request()->routeIs('student.bookmarks')) aria-current="page" @endif
+                >Guardadas</a>
+            @endif
 
             @auth('web')
                 <span class="app-header__identity">
@@ -62,6 +74,7 @@
             <a
                 href="{{ route($profileRoute) }}"
                 class="app-header__button"
+                @if(request()->routeIs($profileRoute)) aria-current="page" @endif
                 aria-label="Ver perfil"
             >
                 <img
