@@ -44,17 +44,21 @@ class ProfileController extends Controller
             ->map(function (Application $application) {
                 $vacancy = Vacancy::find($application->vacancy_id);
 
-                if (!$vacancy || $vacancy->status !== 'published') {
-                    return null;
+                if (!$vacancy) {
+                    return [
+                        'id' => null,
+                        'title' => 'Vacante no disponible',
+                        'companyName' => 'Empresa no disponible',
+                        'status' => $application->status ?? 'pending',
+                    ];
                 }
 
                 $company = User::find($vacancy->company_user_id);
+                $card = $vacancy->card($company);
+                $card['status'] = $application->status ?? 'pending';
+                $card['isAvailable'] = $vacancy->status === 'published';
 
-                if (!$company) {
-                    return null;
-                }
-
-                return $vacancy->card($company);
+                return $card;
             })
             ->filter()
             ->values();

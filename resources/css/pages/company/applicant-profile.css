@@ -299,3 +299,13 @@
     }
 
 }
+
+/* colores del proyecto para las decisiones */
+.company-applicant-profile__action--accept { background: linear-gradient(180deg, #9dffe3 0%, #1ed4a1 100%); color: #124c3c; font-size: 25px; }
+.company-applicant-profile__action--reject { background: linear-gradient(180deg, #f6c3e9 0%, #e98bd0 100%); color: #5d204d; font-size: 25px; }
+.company-applicant-profile__status { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.company-applicant-profile__status-badge { display: inline-flex; padding: 7px 14px; border-radius: 20px; font-size: 14px; }
+.company-applicant-profile__status-badge--pending { background: #fff0d5; color: #77510b; }
+.company-applicant-profile__status-badge--accepted { background: #c8f7e9; color: #115c49; }
+.company-applicant-profile__status-badge--rejected { background: #f9dce9; color: #8b2555; }
+.company-applicant-profile__decision { text-align: center; font-weight: 700; color: #515662; }
