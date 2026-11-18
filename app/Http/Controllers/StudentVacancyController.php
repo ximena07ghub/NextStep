@@ -67,13 +67,15 @@ class StudentVacancyController extends Controller
         $company = User::where('role', 'company')->where('_id', $record->company_user_id)->firstOrFail();
         $vacancy = $record->card($company);
         $student = $request->user();
-        $alreadyApplied = Application::where('vacancy_id', $id)
-            ->where('student_user_id', (string) $student->getKey())->exists();
+        $application = Application::where('vacancy_id', $id)
+            ->where('student_user_id', (string) $student->getKey())->first();
+        $alreadyApplied = $application !== null;
+        $applicationStatus = $application?->status;
         $saved = Bookmark::where('vacancy_id', $id)
             ->where('student_user_id', (string) $student->getKey())
             ->exists();
 
-        return view('student.vacancy-detail', compact('vacancy', 'student', 'alreadyApplied', 'saved'));
+        return view('student.vacancy-detail', compact('vacancy', 'student', 'alreadyApplied', 'applicationStatus', 'saved'));
     }
 
     public function company(Request $request, string $id)

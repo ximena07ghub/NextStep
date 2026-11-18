@@ -41,13 +41,6 @@
                             <span>Esta vacante ya no está publicada.</span>
                         </div>
                     @endif
-                    @php
-                        $status = $application['status'] ?? 'pending';
-                        $statusLabel = ['pending' => 'Pendiente', 'accepted' => 'Aceptada', 'rejected' => 'Rechazada'][$status] ?? 'Pendiente';
-                    @endphp
-                    <span class="student-profile-page__status student-profile-page__status--{{ in_array($status, ['pending', 'accepted', 'rejected']) ? $status : 'pending' }}">
-                        Estado: {{ $statusLabel }}
-                    </span>
                 </div>
 
             @empty

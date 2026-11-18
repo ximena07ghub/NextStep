@@ -1,0 +1,6 @@
+
+/* estado junto al botón de guardar */
+.vacancy-detail__application-status { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 8px 16px; border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 800; }
+.vacancy-detail__application-status--pending { background: #fff0d5; color: #77510b; }
+.vacancy-detail__application-status--accepted { background: #c8f7e9; color: #115c49; }
+.vacancy-detail__application-status--rejected { background: #f9dce9; color: #8b2555; }
