@@ -55,3 +55,23 @@
 .admin-delete-form { display: inline; }
 .admin-link--danger { border: 0; background: transparent; color: #a72d36; font: inherit; text-decoration: underline; cursor: pointer; }
 .admin-link--danger:hover, .admin-link--danger:focus-visible { color: #7d1720; }
+
+/* reportes dentro del área del administrador */
+.admin-shell { min-width:0; }
+.admin-navigation { min-width:0; }
+.admin-sidebar { min-width:0; box-sizing:border-box; }
+.admin-sidebar a { min-width:0; max-width:100%; overflow-wrap:anywhere; }
+.admin-sidebar a img { width:24px; height:24px; flex-shrink:0; }
+.admin-main { min-width:0; max-width:100%; }
+.admin-reports { width:100%; min-width:0; }
+.admin-reports__tabs { display:flex; gap:10px; flex-wrap:wrap; margin:0 0 20px; }
+.admin-reports__tab { display:inline-flex; padding:10px 14px; border-radius:12px; background:#f1f6f4; color:#225b49; text-decoration:none; font-weight:700; font-size:14px; }
+.admin-reports__tab[aria-current="page"] { background:#9dffe3; color:#154e3d; }
+.admin-reports__table { max-width:100%; width:100%; overflow-x:auto; }
+.admin-reports__table .admin-table { min-width:570px; }
+.admin-reports__table td { overflow-wrap:anywhere; }
+.admin-reports__summary { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.admin-reports__summary .admin-stat { min-width:0; }
+.admin-reports__summary .admin-stat strong { font-size:clamp(22px,3vw,34px); }
+@media(max-width:900px) { .admin-reports__summary { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:520px) { .admin-reports__summary { grid-template-columns:1fr 1fr; } .admin-reports__tabs { gap:6px; } .admin-reports__tab { font-size:12px; padding:8px 10px; } }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminReportController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\BookmarkController;
@@ -216,6 +217,10 @@ Route::prefix('admin')
         // lleva al inicio del panel
         Route::redirect('/', '/admin/students')
             ->name('home');
+
+        // ------- reportes -------
+        Route::get('/reports', [AdminReportController::class, 'index'])
+            ->name('reports.index');
 
         // ------- estudiantes -------
 

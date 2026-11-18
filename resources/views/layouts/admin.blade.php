@@ -16,7 +16,7 @@
     </header>
     <div class="admin-shell">
         <aside class="admin-navigation"><nav class="admin-sidebar" aria-label="Administración">
-            @foreach (['students' => ['Estudiantes', 'Users.svg'], 'companies' => ['Empresas', 'Briefcase.svg']] as $section => [$label, $icon])
+            @foreach (['students' => ['Estudiantes', 'Users.svg'], 'companies' => ['Empresas', 'Briefcase.svg'], 'reports' => ['Reportes', 'Filedash.svg']] as $section => [$label, $icon])
                 <a href="{{ route('admin.'.$section.'.index') }}" @if(request()->routeIs('admin.'.$section.'.*')) aria-current="page" @endif><img src="{{ asset('images/'.$icon) }}" alt="" width="24" height="24">{{ $label }}</a>
             @endforeach
         </nav></aside>
