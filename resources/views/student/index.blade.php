@@ -17,7 +17,7 @@
 @endphp
 
 
-<main
+<div
     class="student-home"
     data-student-home
     data-bookmark-icon="{{ asset('images/Bookmark.svg') }}"
@@ -68,6 +68,7 @@
                         name="query"
                         class="vacancy-search__input"
                         placeholder="Título de puesto, empresa"
+                        aria-label="Buscar por puesto o empresa"
                     >
 
                 </div>
@@ -96,6 +97,7 @@
                         name="location"
                         class="vacancy-search__input"
                         placeholder="Ubicación"
+                        aria-label="Filtrar por ubicación"
                     >
 
                 </div>
@@ -122,6 +124,7 @@
             class="vacancy-search__advanced-toggle"
             aria-expanded="false"
             aria-label="Mostrar búsqueda avanzada"
+            aria-controls="student-advanced-filters"
             data-advanced-toggle
         >
 
@@ -138,6 +141,7 @@
         {{--  BÚSQUEDA AVANZADA  --}}
 
         <div
+            id="student-advanced-filters"
             class="vacancy-search__advanced"
             data-advanced-panel
             hidden
@@ -363,6 +367,8 @@
             </h2>
 
 
+            <p class="student-home__search-feedback" data-vacancy-search-feedback role="status" hidden></p>
+
             <div class="student-home__vacancy-list">
 
                 @forelse ($vacancies as $vacancy)
@@ -393,6 +399,6 @@
         @include('student.partials.application-modal', ['vacancy' => $vacancies->first(), 'student' => auth('web')->user()])
     @endif
 
-</main>
+</div>
 
 @endsection
