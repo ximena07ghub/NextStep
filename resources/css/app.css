@@ -3,6 +3,7 @@
 
 /* Componentes */
 @import './components/student-layout.css';
+@import './components/company-layout.css';
 @import './components/footer.css';
 @import './components/auth-feedback.css';
 @import './components/vacancy-card.css';

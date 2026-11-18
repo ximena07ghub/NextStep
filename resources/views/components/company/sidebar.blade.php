@@ -1,12 +1,13 @@
 <aside class="company-sidebar">
 
-    <nav class="company-sidebar__menu">
+    <nav class="company-sidebar__menu" aria-label="Secciones de empresa">
 
 
         {{-- DASHBOARD --}}
 
         <a
             href="{{ route('company.home') }}"
+            @if(request()->routeIs('company.home')) aria-current="page" @endif
             class="
                 company-sidebar__item
                 {{ request()->routeIs('company.home')
@@ -32,6 +33,7 @@
 
         <a
             href="{{ route('company.vacancies.index') }}"
+            @if(request()->routeIs('company.vacancies.*')) aria-current="page" @endif
             class="
                 company-sidebar__item
                 {{ request()->routeIs('company.vacancies.*')
@@ -57,6 +59,7 @@
 
         <a
             href="{{ route('company.applications') }}"
+            @if(request()->routeIs('company.applications*')) aria-current="page" @endif
             class="
                 company-sidebar__item
                 {{ request()->routeIs('company.applications*')
@@ -82,6 +85,7 @@
 
         <a
             href="{{ route('company.ratings') }}"
+            @if(request()->routeIs('company.ratings')) aria-current="page" @endif
             class="
                 company-sidebar__item
                 {{ request()->routeIs('company.ratings')
