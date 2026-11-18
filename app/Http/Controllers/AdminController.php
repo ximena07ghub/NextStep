@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
-use App\Models\Bookmark;
-use App\Models\CompanyProfileView;
-use App\Models\CompanyReview;
 use App\Models\StudentProfile;
 use App\Models\Subscription;
 use App\Models\User;
