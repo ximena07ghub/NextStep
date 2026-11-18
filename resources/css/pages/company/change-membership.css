@@ -1,15 +1,72 @@
+/* catálogo de planes para empresas */
 .change-membership-page {
     width: 100%;
-
-    display: flex;
-    justify-content: center;
-
-    padding: 40px 0 60px;
-
-    box-sizing: border-box;
+    padding: 40px 20px 70px;
 }
-
-.change-membership-page .company-membership {
-    justify-content: center;
-    gap: 40px;
+.ns-catalog {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+}
+.ns-catalog__back {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: #147e72;
+    font-weight: 700;
+}
+.ns-catalog__header { margin-bottom: 32px; text-align: center; }
+.ns-catalog__header h1 { font-size: clamp(2rem, 5vw, 3rem); }
+.ns-catalog__header p { margin-top: 12px; color: #575757; }
+.ns-catalog__fieldset { border: 0; min-width: 0; }
+.ns-catalog__legend { font-weight: 700; margin-bottom: 16px; }
+.ns-catalog__plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 20px;
+    align-items: stretch;
+}
+.ns-catalog__plan {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 28px;
+    border: 2px solid #dedede;
+    border-radius: 22px;
+    background: #fff;
+    cursor: pointer;
+}
+.ns-catalog__plan:has(input:checked) {
+    border-color: #83bfb2;
+    background: #f8fcfa;
+    box-shadow: 0 0 0 1px #b7d8cf;
+}
+.ns-catalog__plan:focus-within { outline: 3px solid #168782; outline-offset: 3px; }
+.ns-catalog__choice { display: flex; align-items: center; gap: 10px; color: #333; font-weight: 700; }
+.ns-catalog__choice input { accent-color: #168782; width: 18px; height: 18px; }
+.ns-catalog__name { font-size: 1.6rem; overflow-wrap: anywhere; }
+.ns-catalog__price { font-size: 1.7rem; font-weight: 800; }
+.ns-catalog__price small { font-size: 0.9rem; font-weight: 500; }
+.ns-catalog__limit { color: #444; font-weight: 700; }
+.ns-catalog__benefits { padding-left: 22px; line-height: 1.6; }
+.ns-catalog__empty { grid-column: 1/-1; }
+.ns-catalog__notice { margin: 28px auto 0; padding: 18px 20px; max-width: 780px; border-radius: 14px; background: #f6f8f8; color: #43534f; line-height: 1.6; }
+.ns-catalog__checkout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    max-width: 560px;
+    margin: 32px auto 0;
+}
+.ns-catalog__checkout label { font-weight: 700; }
+.ns-catalog__checkout input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #888;
+    border-radius: 10px;
+}
+.ns-catalog__checkout p { color: #505050; line-height: 1.5; }
+@media (max-width: 480px) {
+    .change-membership-page { padding: 24px 16px 50px; }
+    .ns-catalog__plan { padding: 20px; }
 }
