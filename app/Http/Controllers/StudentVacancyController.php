@@ -15,6 +15,7 @@ class StudentVacancyController extends Controller
 {
     public function index(Request $request)
     {
+        Vacancy::closeExpired();
         $appliedIds = Application::where('student_user_id', (string) $request->user()->getKey())
             ->pluck('vacancy_id')->map(fn ($id) => (string) $id)->all();
         $savedIds = Bookmark::where('student_user_id', (string) $request->user()->getKey())
@@ -36,6 +37,7 @@ class StudentVacancyController extends Controller
 
     public function bookmarks(Request $request)
     {
+        Vacancy::closeExpired();
         $savedVacancies = Bookmark::where(
             'student_user_id',
             (string) $request->user()->getKey()
@@ -63,6 +65,7 @@ class StudentVacancyController extends Controller
 
     public function show(Request $request, string $id)
     {
+        Vacancy::closeExpired();
         $record = Vacancy::where('status', 'published')->where('_id', $id)->firstOrFail();
         $company = User::where('role', 'company')->where('_id', $record->company_user_id)->firstOrFail();
         $vacancy = $record->card($company);
@@ -80,6 +83,7 @@ class StudentVacancyController extends Controller
 
     public function company(Request $request, string $id)
     {
+        Vacancy::closeExpired();
         $record = User::where('role', 'company')->where('_id', $id)->firstOrFail();
         
         $studentId = (string) $request->user()->getKey();

@@ -12,6 +12,7 @@ class CompanyVacancyController extends Controller
 {
     public function dashboard(Request $request)
     {
+        Vacancy::closeExpired();
         $id = (string) $request->user()->getKey();
 
         /* Todas las solicitudes recibidas por esta empresa */
@@ -103,10 +104,15 @@ class CompanyVacancyController extends Controller
 
     public function index(Request $request)
     {
+        Vacancy::closeExpired();
         $company = $request->user();
         $vacancies = Vacancy::where('company_user_id', (string) $company->getKey())
-            ->where('status', 'published')->latest()->get()
-            ->map(fn (Vacancy $vacancy) => $vacancy->card($company));
+            ->latest()->get()
+            ->map(function (Vacancy $vacancy) use ($company) {
+                $card = $vacancy->card($company);
+                $card['status'] = $vacancy->status;
+                return $card;
+            });
 
         return view('company.vacancies', compact('vacancies'));
     }
@@ -116,15 +122,34 @@ class CompanyVacancyController extends Controller
         $fields = $this->fields($request);
         $fields['company_user_id'] = (string) $request->user()->getKey();
         $fields['status'] = 'published';
+        $fields['published_at'] = now();
+        $fields['expires_at'] = now()->addMonthsNoOverflow($fields['stay_duration'] === '6 meses' ? 6 : 3);
         $vacancy = Vacancy::create($fields);
 
         return redirect()->route('company.vacancies.show', $vacancy->getKey())
             ->with('success', 'Vacante publicada.');
     }
 
+    // renueva una vacante cerrada
+    public function renew(Request $request, string $id)
+    {
+        $vacancy = $this->owned($request, $id);
+        abort_unless($vacancy->status === 'closed', 422);
+        $months = $vacancy->stay_duration === '6 meses' ? 6 : 3;
+        $vacancy->update([
+            'status' => 'published',
+            'published_at' => now(),
+            'expires_at' => now()->addMonthsNoOverflow($months),
+        ]);
+        return redirect()->route('company.vacancies.show', $id)->with('success', 'Vacante renovada.');
+    }
+
     public function show(Request $request, string $id)
     {
-        $vacancy = $this->owned($request, $id)->card($request->user());
+        Vacancy::closeExpired();
+        $record = $this->owned($request, $id);
+        $vacancy = $record->card($request->user());
+        $vacancy['status'] = $record->status;
 
         return view('company.vacancy-detail', compact('vacancy'));
     }

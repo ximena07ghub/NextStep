@@ -32,13 +32,14 @@
 
             {{-- ELIMINAR --}}
 
-            <button
-                type="button"
-                class="vacancy-detail__primary-button"
-                data-delete-vacancy
-            >
-                Eliminar
-            </button>
+            @if ($vacancy['status'] === 'closed')
+                <form method="POST" action="{{ route('company.vacancies.renew', $vacancy['id']) }}">
+                    @csrf
+                    <button class="vacancy-detail__primary-button" type="submit">Renovar vacante</button>
+                </form>
+            @else
+                <button type="button" class="vacancy-detail__primary-button" data-delete-vacancy>Cerrar vacante</button>
+            @endif
 
         </x-slot:actions>
 

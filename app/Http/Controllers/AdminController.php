@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
-use App\Models\Bookmark;
-use App\Models\CompanyProfileView;
-use App\Models\CompanyReview;
 use App\Models\StudentProfile;
 use App\Models\Subscription;
 use App\Models\User;
@@ -155,7 +152,6 @@ class AdminController extends Controller
         $company = User::where('role', 'company')->findOrFail($id);
         $data = $request->validate([
             'company_name' => 'required|string|max:150',
-            'rfc' => 'required|string|max:20',
             'description' => 'nullable|string|max:2000',
             'state' => 'nullable|string|max:100',
             'city' => 'nullable|string|max:100',
@@ -166,44 +162,14 @@ class AdminController extends Controller
 
     public function deleteStudent(string $id)
     {
-        $student = User::where('role', 'student')->findOrFail($id);
-        $profile = StudentProfile::where('user_id', $id)->first();
-
-        // elimina los documentos relacionados antes de quitar la cuenta
-        Application::where('student_user_id', $id)->delete();
-        Bookmark::where('student_user_id', $id)->delete();
-        CompanyReview::where('student_user_id', $id)->delete();
-        CompanyProfileView::where('student_user_id', $id)->delete();
-        StudentProfile::where('user_id', $id)->delete();
-        $student->delete();
-
-        // los archivos se eliminan solo después de borrar los registros
-        $paths = array_filter([$student->cv_path, $profile?->kardex_path]);
-        foreach ($paths as $path) {
-            Storage::disk('local')->delete($path);
-        }
+        app(\App\Services\AccountDeletionService::class)->deleteStudent($id);
 
         return redirect()->route('admin.students.index')->with('success', 'Estudiante eliminado definitivamente.');
     }
 
     public function deleteCompany(string $id)
     {
-        $company = User::where('role', 'company')->findOrFail($id);
-        $vacancyIds = Vacancy::where('company_user_id', $id)->get()
-            ->map(fn ($vacancy) => (string) $vacancy->getKey())->all();
-
-        // elimina las referencias para que no queden vacantes sin empresa
-        Bookmark::whereIn('vacancy_id', $vacancyIds)->delete();
-        Application::where('company_user_id', $id)->delete();
-        Vacancy::where('company_user_id', $id)->delete();
-        CompanyReview::where('company_user_id', $id)->delete();
-        CompanyProfileView::where('company_user_id', $id)->delete();
-        Subscription::where('company_user_id', $id)->delete();
-        $company->delete();
-
-        if ($company->logo_path) {
-            Storage::disk('public')->delete($company->logo_path);
-        }
+        app(\App\Services\AccountDeletionService::class)->deleteCompany($id);
 
         return redirect()->route('admin.companies.index')->with('success', 'Empresa eliminada definitivamente.');
     }

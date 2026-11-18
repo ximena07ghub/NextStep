@@ -429,8 +429,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
             updatePreview(vacancy)
 
+            // señala la tarjeta seleccionada
+            vacancyCards.forEach(item => {
+                const selected = item === card
+                item.classList.toggle('is-selected', selected)
+                item.setAttribute('aria-pressed', String(selected))
+            })
+
+            // desplaza al detalle en ventanas pequeñas
+            if (window.matchMedia('(max-width: 1100px)').matches) {
+                preview?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }
+
         })
 
+    })
+
+    vacancyCards.forEach(card => {
+        const selected = card.dataset.vacancyId === preview?.dataset.vacancyId
+        card.classList.toggle('is-selected', selected)
+        card.setAttribute('aria-pressed', String(selected))
     })
 
     if (page.dataset.initialVacancyId) {

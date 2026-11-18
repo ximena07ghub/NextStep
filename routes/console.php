@@ -56,3 +56,11 @@ Artisan::command('nextstep:prepare-opportunities', function () {
         return 1;
     }
 })->purpose('Prepara vacantes y evita postulaciones duplicadas');
+
+// actualiza diariamente las vacantes vencidas
+Artisan::command('nextstep:close-expired', function () {
+    \App\Models\Vacancy::closeExpired();
+    $this->info('Vacantes vencidas revisadas.');
+})->purpose('Cierra vacantes vencidas');
+
+\Illuminate\Support\Facades\Schedule::command('nextstep:close-expired')->daily();

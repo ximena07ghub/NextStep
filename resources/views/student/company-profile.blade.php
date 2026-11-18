@@ -10,7 +10,7 @@
 
 
 
-    {{-- PARTE SUPERIOR --}}
+    {{-- encabezado --}}
 
     <section class="company-public-profile__top">
 
@@ -61,7 +61,7 @@
         </div>
 
 
-        {{-- DESCRIPCIÓN --}}
+        {{-- descripción --}}
 
         <section class="company-public-profile__description">
 
@@ -78,7 +78,7 @@
     </section>
 
 
-    {{-- PESTAÑAS --}}
+    {{-- pestañas --}}
 
     <div class="company-public-profile__tabs">
 
@@ -94,7 +94,7 @@
     </div>
 
 
-    {{--  VACANTES  --}}
+    {{-- vacantes --}}
 
     <section
         class="company-public-profile__vacancies"
@@ -134,8 +134,6 @@
                         <option value="{{ $score }}" @selected(old('rating') == $score)>{{ $score }} {{ $score == 1 ? 'estrella' : 'estrellas' }}</option>
                     @endfor
                 </select>
-                <label for="review-title">Título</label>
-                <input id="review-title" name="review_title" minlength="3" maxlength="100" value="{{ old('review_title') }}" required>
                 <label for="review-description">Tu experiencia</label>
                 <textarea id="review-description" name="review_description" rows="5" minlength="10" maxlength="1500" required>{{ old('review_description') }}</textarea>
                 <p>Escribe al menos 10 caracteres sobre tu experiencia.</p>
@@ -147,8 +145,6 @@
         @forelse ($reviews as $review)
             <article class="company-public-profile__review-card">
                 <p aria-label="{{ (int) $review->rating }} de 5 estrellas">{{ str_repeat('★', (int) $review->rating) }}{{ str_repeat('☆', max(0, 5 - (int) $review->rating)) }}</p>
-                <h3>{{ $review->review_title ?: 'Valoración' }}</h3>
-                @if ($review->job_title)<p>{{ $review->job_title }}</p>@endif
                 <p>{{ $review->review_description }}</p>
                 <small>{{ $review->created_at?->format('d/m/Y') ?? 'Sin fecha' }}</small>
             </article>

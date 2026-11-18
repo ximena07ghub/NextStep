@@ -43,10 +43,6 @@
                             {{ $review->created_at?->format('d/m/Y') ?? 'Sin fecha' }}
                         </time>
                     </div>
-                    <div class="company-ratings__review-info">
-                        <h3>{{ $review->review_title }}</h3>
-                        <p>{{ $review->job_title }}</p>
-                    </div>
                     <p class="company-ratings__review-comment">{{ $review->review_description }}</p>
                 </article>
             @empty

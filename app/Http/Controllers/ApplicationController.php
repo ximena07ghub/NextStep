@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ApplicationController extends Controller
 {
-    // ------- solicitudes de la empresa -------
+    // solicitudes de la empresa
 
     // muestra las postulaciones que recibio la empresa
     public function companyIndex()
@@ -170,11 +170,12 @@ class ApplicationController extends Controller
             ->with('success', 'Estado de la solicitud actualizado.');
     }
 
-    // ------- postulacion desde la pagina -------
+    // postulacion desde la pagina
 
     // recibe la postulacion que hace el estudiante
     public function storeStudent(Request $request, string $id)
     {
+        Vacancy::closeExpired();
         // obtiene al estudiante que tiene la sesion abierta
         $student = $request->user();
 
@@ -220,7 +221,7 @@ class ApplicationController extends Controller
             'cv.max' => 'El CV no debe superar los 5 MB.',
         ]);
 
-        // ------- guardar el cv -------
+        // guardar el cv
 
         // si se subio un cv nuevo, tambien se guarda en el perfil
         if ($request->hasFile('cv')) {
@@ -243,7 +244,7 @@ class ApplicationController extends Controller
             }
         }
 
-        // ------- guardar la postulacion -------
+        // guardar la postulacion
 
         // crea la solicitud con los datos del estudiante y la vacante
         Application::create([
@@ -267,7 +268,7 @@ class ApplicationController extends Controller
             ->with('success', 'Postulación exitosa.');
     }
 
-    // ------- postulaciones desde la api -------
+    // postulaciones desde la api
 
     // crea una postulacion desde la api administrativa
     public function store(Request $request)
@@ -304,7 +305,13 @@ class ApplicationController extends Controller
     {
         $application = Application::findOrFail($id);
 
-        $application->update($request->all());
+        $application->update($request->validate([
+            'status' => ['sometimes', 'required', 'in:pending,accepted,rejected'],
+            'full_name' => ['sometimes', 'required', 'string', 'max:255'],
+            'email' => ['sometimes', 'required', 'email', 'max:255'],
+            'phone' => ['sometimes', 'required', 'string', 'max:20'],
+            'location' => ['sometimes', 'required', 'string', 'max:255'],
+        ]));
 
         return response()->json($application, 200);
     }

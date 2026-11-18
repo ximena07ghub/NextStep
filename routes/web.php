@@ -154,6 +154,10 @@ Route::prefix('company')
         Route::delete('/vacancies/{id}', [CompanyVacancyController::class, 'destroy'])
             ->name('vacancies.destroy');
 
+        // renueva una vacante cerrada
+        Route::post('/vacancies/{id}/renew', [CompanyVacancyController::class, 'renew'])
+            ->name('vacancies.renew');
+
         // muestra el detalle de una vacante
         Route::get('/vacancies/{id}', [CompanyVacancyController::class, 'show'])
             ->name('vacancies.show');

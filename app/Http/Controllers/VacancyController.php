@@ -12,11 +12,11 @@ class VacancyController extends Controller
         $validated = $request->validate([
             'company_user_id' => 'required|string',
             'title' => 'required|string|max:255',
-            'modality' => 'required|string', 
+            'modality' => 'required|in:Remoto,Presencial,Híbrido', 
             'location' => 'required|string|max:255',
-            'stay_duration' => 'required|string',
+            'stay_duration' => 'required|in:3 meses,6 meses',
             'salary_fixed' => 'required|numeric|min:1', 
-            'periodicity' => 'required|string', 
+            'periodicity' => 'required|in:Por mes,Por quincena,Por semana', 
             'description' => 'required|string',
             'benefits' => 'required|array', 
         ]);
@@ -39,11 +39,11 @@ class VacancyController extends Controller
         $validated = $request->validate([
             'title' => 'sometimes|required|string|max:255',
             'description' => 'sometimes|required|string',
-            'modality' => 'sometimes|required|string',
+            'modality' => 'sometimes|required|in:Remoto,Presencial,Híbrido',
             'location' => 'sometimes|required|string|max:255',
-            'stay_duration' => 'sometimes|required|string',
+            'stay_duration' => 'sometimes|required|in:3 meses,6 meses',
             'salary_fixed' => 'sometimes|required|numeric|min:1',
-            'periodicity' => 'sometimes|required|string',
+            'periodicity' => 'sometimes|required|in:Por mes,Por quincena,Por semana',
             'benefits' => 'sometimes|required|array',
             'status' => 'sometimes|required|string|in:published,closed'
         ]);
