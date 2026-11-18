@@ -64,7 +64,7 @@ class StudentVacancyController extends Controller
     public function show(Request $request, string $id)
     {
         $record = Vacancy::where('status', 'published')->where('_id', $id)->firstOrFail();
-        $company = User::findOrFail($record->company_user_id);
+        $company = User::where('role', 'company')->where('_id', $record->company_user_id)->firstOrFail();
         $vacancy = $record->card($company);
         $student = $request->user();
         $alreadyApplied = Application::where('vacancy_id', $id)

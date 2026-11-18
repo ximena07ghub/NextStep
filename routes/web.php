@@ -94,7 +94,7 @@ Route::prefix('student')
         Route::post(
             '/vacancies/{id}/applications',
             [ApplicationController::class, 'storeStudent']
-        )->name('applications.store');
+        )->middleware('throttle:5,1')->name('applications.store');
 
         // guarda una vacante
         Route::post(
