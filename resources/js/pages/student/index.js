@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const closeSectorDropdown = () => {
 
+        if (!sectorMenu || !sectorTrigger || !sectorIcon) return
         sectorMenu.hidden = true
 
         sectorTrigger.classList.remove(
@@ -107,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const openSectorDropdown = () => {
 
+        if (!sectorMenu || !sectorTrigger || !sectorIcon) return
         sectorMenu.hidden = false
 
         sectorTrigger.classList.add(
@@ -120,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    sectorOptions.forEach((option) => {
+    if (sectorMenu && sectorInput && sectorLabel) sectorOptions.forEach((option) => {
 
         const button = document.createElement('button')
 
@@ -170,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sectorTrigger?.addEventListener('click', () => {
 
+        if (!sectorMenu) return
         if (sectorMenu.hidden) {
             openSectorDropdown()
             return
@@ -179,6 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     })
 
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeSectorDropdown()
+    })
 
     document.addEventListener('click', (event) => {
 
@@ -209,19 +216,44 @@ document.addEventListener('DOMContentLoaded', () => {
         const location = String(filters.location || '').toLocaleLowerCase('es-MX').trim()
         const minSalary = Number(filters.min_salary || 0)
         const maxSalary = Number(filters.max_salary || 0)
-        const age = Number(filters.publication_age || 0)
+        const age = String(filters.publication_age || '')
         const sector = String(filters.sector || '')
+        let visibleCount = 0
+        const feedback = page.querySelector('[data-vacancy-search-feedback]')
+        if (minSalary && maxSalary && minSalary > maxSalary) {
+            if (feedback) {
+                feedback.hidden = false
+                feedback.textContent = 'El sueldo mínimo no puede ser mayor al máximo.'
+            }
+            return
+        }
         vacancyCards.forEach(card => {
             const vacancy = vacancies.find(item => String(item.id) === String(card.dataset.vacancyId))
+            const publishedAt = vacancy?.createdAt ? Date.parse(vacancy.createdAt) : NaN
+            const daysOld = Number.isFinite(publishedAt) ? (Date.now() - publishedAt) / 86400000 : null
+            const dateMatches = !age || (daysOld !== null && (age === 'older_21' ? daysOld > 21 : daysOld >= 0 && daysOld <= Number(age)))
             card.hidden = !vacancy || !(
                 (!query || `${vacancy.title} ${vacancy.company}`.toLocaleLowerCase('es-MX').includes(query)) &&
-                (!location || vacancy.location.toLocaleLowerCase('es-MX').includes(location)) &&
+                (!location || String(vacancy.location || '').toLocaleLowerCase('es-MX').includes(location)) &&
                 (!minSalary || vacancy.salaryFixed >= minSalary) &&
                 (!maxSalary || vacancy.salaryFixed <= maxSalary) &&
                 (!sector || vacancy.sector === sector) &&
-                (!age || (vacancy.createdAt && Date.now() - Date.parse(vacancy.createdAt) <= age * 86400000))
+                dateMatches
             )
+            if (!card.hidden) visibleCount++
         })
+        if (feedback) {
+            feedback.hidden = visibleCount > 0
+            feedback.textContent = visibleCount ? '' : 'No encontramos vacantes con estos filtros. Prueba otra búsqueda.'
+        }
+        const firstVisible = Array.from(vacancyCards).find(card => !card.hidden)
+        const previewStillVisible = Array.from(vacancyCards).some(card => !card.hidden && card.dataset.vacancyId === preview?.dataset.vacancyId)
+        // ocultamos el detalle cuando la búsqueda no tiene resultados
+        if (preview) preview.hidden = !firstVisible
+        if (firstVisible && !previewStillVisible) {
+            const firstVacancy = vacancies.find(item => String(item.id) === String(firstVisible.dataset.vacancyId))
+            if (firstVacancy) updatePreview(firstVacancy)
+        }
 
     })
 
@@ -244,6 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
+        preview.hidden = false
         preview.dataset.vacancyId =
             String(vacancy.id)
 

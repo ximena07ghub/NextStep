@@ -126,7 +126,7 @@
                         data-preview-benefits
                     >
 
-                        @foreach ($vacancy['benefits'] as $benefit)
+                        @foreach (($vacancy['benefits'] ?? []) as $benefit)
 
                             <span class="vacancy-preview__benefit">
                                 {{ $benefit }}
