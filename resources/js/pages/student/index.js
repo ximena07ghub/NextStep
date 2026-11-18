@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const closeSectorDropdown = () => {
 
+        if (!sectorMenu || !sectorTrigger || !sectorIcon) return
         sectorMenu.hidden = true
 
         sectorTrigger.classList.remove(
@@ -107,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const openSectorDropdown = () => {
 
+        if (!sectorMenu || !sectorTrigger || !sectorIcon) return
         sectorMenu.hidden = false
 
         sectorTrigger.classList.add(
@@ -120,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    sectorOptions.forEach((option) => {
+    if (sectorMenu && sectorInput && sectorLabel) sectorOptions.forEach((option) => {
 
         const button = document.createElement('button')
 
@@ -170,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sectorTrigger?.addEventListener('click', () => {
 
+        if (!sectorMenu) return
         if (sectorMenu.hidden) {
             openSectorDropdown()
             return
@@ -179,6 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     })
 
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeSectorDropdown()
+    })
 
     document.addEventListener('click', (event) => {
 
@@ -241,6 +248,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         const firstVisible = Array.from(vacancyCards).find(card => !card.hidden)
         const previewStillVisible = Array.from(vacancyCards).some(card => !card.hidden && card.dataset.vacancyId === preview?.dataset.vacancyId)
+        // ocultamos el detalle cuando la búsqueda no tiene resultados
+        if (preview) preview.hidden = !firstVisible
         if (firstVisible && !previewStillVisible) {
             const firstVacancy = vacancies.find(item => String(item.id) === String(firstVisible.dataset.vacancyId))
             if (firstVacancy) updatePreview(firstVacancy)
@@ -267,6 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
+        preview.hidden = false
         preview.dataset.vacancyId =
             String(vacancy.id)
 
