@@ -175,6 +175,7 @@ class ApplicationController extends Controller
     // recibe la postulacion que hace el estudiante
     public function storeStudent(Request $request, string $id)
     {
+        Vacancy::closeExpired();
         // obtiene al estudiante que tiene la sesion abierta
         $student = $request->user();
 

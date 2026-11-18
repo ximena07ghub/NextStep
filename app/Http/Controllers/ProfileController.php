@@ -190,19 +190,6 @@ class ProfileController extends Controller
     public function updateCompany(Request $request)
     {
         $data = $request->validate([
-            'sector' => [
-                'required',
-                'string',
-                'in:technology,health,education,finance,engineering,business,marketing,sales,rh,law,architecture,communication,tourism,manufacturing,construction,logistics,energy,agriculture,science,government,other',
-            ],
-
-            'custom_sector' => [
-                'nullable',
-                'required_if:sector,other',
-                'string',
-                'max:100',
-            ],
-
             'state' => [
                 'nullable',
                 'string',
@@ -242,12 +229,6 @@ class ProfileController extends Controller
         $oldLogo = $user->logo_path;
 
         $user->fill([
-            'sector' => $data['sector'],
-
-            'custom_sector' => $data['sector'] === 'other'
-                ? $data['custom_sector']
-                : null,
-
             'state' => $data['state'] ?? null,
             'city' => $data['city'] ?? null,
             'description' => $data['description'] ?? null,

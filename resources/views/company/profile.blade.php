@@ -28,7 +28,6 @@
         'other' => 'Otro',
     ];
 
-    $currentSector = old('sector', $user->sector);
 
     $sectorName = $user->sector === 'other'
         ? $user->custom_sector
@@ -143,24 +142,6 @@
                             disabled
                             data-company-sector-view
                         >
-
-                        {{-- Vista edición --}}
-                        <select
-                            id="company-sector"
-                            name="sector"
-                            class="company-profile__select"
-                            data-company-sector
-                            hidden
-                        >
-                            @foreach ($sectorLabels as $value => $label)
-                                <option
-                                    value="{{ $value }}"
-                                    @selected($currentSector === $value)
-                                >
-                                    {{ $label }}
-                                </option>
-                            @endforeach
-                        </select>
 
                     </div>
 
