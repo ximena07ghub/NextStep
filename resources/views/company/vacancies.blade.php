@@ -10,7 +10,9 @@
 
     <h1 class="company-vacancies__title">Vacantes publicadas</h1>
     <p>Administra tus oportunidades laborales y consulta sus detalles.</p>
+    @if ($vacancies->isNotEmpty())
     <p><a class="admin-button admin-button--primary" href="{{ route('company.vacancies.create') }}">Publicar nueva vacante</a></p>
+    @endif
 
 
     {{-- ========================================

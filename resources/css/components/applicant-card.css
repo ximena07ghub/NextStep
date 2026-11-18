@@ -113,3 +113,6 @@
 .applicant-card[hidden] {
     display: none;
 }
+/* nombre del estudiante primero */
+.applicant-card__vacancy-title { font-size: clamp(20px, 2vw, 26px); }
+.applicant-card__applicant { width: 100%; }

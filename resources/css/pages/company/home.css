@@ -348,3 +348,15 @@
     outline: 3px solid #168782;
     outline-offset: 4px;
 }
+
+/* textos dentro del menú */
+.company-sidebar { width: 190px; height: auto; min-height: 362px; padding: 28px 16px; }
+.company-sidebar__menu { width: 100%; gap: 30px; }
+.company-sidebar__item { min-width: 0; gap: 8px; font-size: 14px; }
+.company-sidebar__item span { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
+.company-sidebar__icon { width: 23px; height: 23px; }
+@media (max-width: 900px) {
+.company-sidebar { width: 100%; min-height: 0; padding: 16px; }
+.company-sidebar__menu { gap: 12px 18px; }
+.company-sidebar__item { max-width: 100%; }
+}

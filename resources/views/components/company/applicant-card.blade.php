@@ -8,17 +8,17 @@
     <div class="applicant-card__content">
 
         <h3 class="applicant-card__vacancy-title">
-            {{ $application['vacancyTitle'] }}
+            {{ $application['name'] }}
         </h3>
 
         <p class="applicant-card__applicant">
 
             <span>
-                Postulado:
+                Vacante:
             </span>
 
             <span class="applicant-card__applicant-name">
-                {{ $application['name'] }}
+                {{ $application['vacancyTitle'] }}
             </span>
 
         </p>
