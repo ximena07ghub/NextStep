@@ -33,7 +33,12 @@ class CompanyReviewController extends Controller
     public function update(Request $request, $id)
     {
         $review = CompanyReview::findOrFail($id);
-        $review->update($request->all());
+        $validated = $request->validate([
+            'rating' => ['sometimes', 'required', 'integer', 'between:1,5'],
+            'review_title' => ['sometimes', 'required', 'string', 'min:3', 'max:100'],
+            'review_description' => ['sometimes', 'required', 'string', 'min:10', 'max:1500'],
+        ]);
+        $review->update($validated);
         return response()->json($review, 200);
     }
 
