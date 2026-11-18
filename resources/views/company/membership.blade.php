@@ -7,6 +7,9 @@
         <p>Consulta tu membresía activa y las compras confirmadas.</p>
     </header>
 
+    @if (request('checkout') === 'returned')
+        <p class="ns-catalog__notice" role="status">Regresaste del proceso de pago. Tu membresía aparecerá cuando el proveedor confirme el cobro.</p>
+    @endif
     <div class="ns-membership-content membership-page__content">
         @if ($currentSubscription)
             <div class="membership-page__current">

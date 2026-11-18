@@ -10,13 +10,21 @@
             <p>Compara las opciones disponibles. Los precios están en pesos mexicanos por mes.</p>
         </header>
 
+        @if ($errors->any())
+            <div class="admin-errors" role="alert"><ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul></div>
+        @endif
+        @if (request('checkout') === 'cancelled')
+            <p class="ns-catalog__notice" role="status">Cancelaste el pago. No se realizó ninguna compra.</p>
+        @endif
+        <form method="POST" action="{{ route('company.membership.checkout') }}">
+            @csrf
         <fieldset class="ns-catalog__fieldset">
             <legend class="ns-catalog__legend">Planes disponibles</legend>
             <div class="ns-catalog__plans">
                 @forelse ($memberships as $membership)
                     <label class="ns-catalog__plan">
                         <span class="ns-catalog__choice">
-                            <input type="radio" name="membership_id" value="{{ $membership->getKey() }}">
+                            <input type="radio" name="membership_id" value="{{ $membership->getKey() }}" required @checked(old('membership_id') === (string) $membership->getKey())>
                             seleccionar
                         </span>
                         <strong class="ns-catalog__name">{{ $membership->name }}</strong>
@@ -34,10 +42,13 @@
             </div>
         </fieldset>
 
-        <p class="ns-catalog__notice" role="status">
-            La contratación en línea aún no está habilitada. Aquí puedes comparar los planes,
-            pero no se registrará una compra ni se realizará un cobro.
-        </p>
+        <div class="ns-catalog__checkout">
+            <label for="billing-email">Correo para el comprobante</label>
+            <input id="billing-email" name="billing_email" type="email" required maxlength="254" value="{{ old('billing_email', auth('web')->user()->email) }}">
+            <p>El pago se procesa de forma segura en Stripe. La membresía se activará cuando Stripe confirme el cobro.</p>
+            <button class="admin-button admin-button--primary" type="submit">Continuar al pago</button>
+        </div>
+        </form>
     </div>
 </section>
 @endsection
