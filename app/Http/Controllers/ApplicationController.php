@@ -31,6 +31,11 @@ class ApplicationController extends Controller
                 return (string) $vacancy->getKey();
             });
 
+        // evita mostrar solicitudes de vacantes que ya no pertenecen a esta empresa
+        $companyApplications = $companyApplications->filter(
+            fn ($application) => $vacancies->has((string) $application->vacancy_id)
+        );
+
         // prepara los datos que necesita la vista
         $applications = $companyApplications->map(
             function ($application) use ($vacancies) {
@@ -65,7 +70,9 @@ class ApplicationController extends Controller
 
         // revisa que la solicitud sea de la empresa con sesion
         abort_unless(
-            (string) $record->company_user_id === (string) auth()->id(),
+            (string) $record->company_user_id === (string) auth()->id()
+                && Vacancy::where('_id', (string) $record->vacancy_id)
+                    ->where('company_user_id', (string) auth()->id())->exists(),
             403
         );
 
@@ -109,7 +116,9 @@ class ApplicationController extends Controller
 
         // revisa que pertenezca a la empresa con sesion
         abort_unless(
-            (string) $application->company_user_id === (string) auth()->id(),
+            (string) $application->company_user_id === (string) auth()->id()
+                && Vacancy::where('_id', (string) $application->vacancy_id)
+                    ->where('company_user_id', (string) auth()->id())->exists(),
             403
         );
 
