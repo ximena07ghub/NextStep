@@ -156,6 +156,11 @@ class ApplicationController extends Controller
             403
         );
 
+        // la decisión se toma una sola vez
+        if ($application->status !== 'pending') {
+            return back()->with('error', 'Esta postulación ya tiene una decisión.');
+        }
+
         // guarda el nuevo estado
         $application->status = $validated['status'];
         $application->save();

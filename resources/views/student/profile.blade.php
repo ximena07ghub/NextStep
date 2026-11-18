@@ -29,13 +29,19 @@
 
             @forelse ($applications as $application)
 
-                {{-- abre el detalle de la vacante --}}
-                <x-vacancy-card
-                    :vacancy="$application"
-                    :href="route('student.vacancies.show', [
-                        'id' => $application['id']
-                    ])"
-                />
+                <div class="student-profile-page__application">
+                    @if(($application['isAvailable'] ?? false) && !empty($application['id']))
+                        <x-vacancy-card
+                            :vacancy="$application"
+                            :href="route('student.vacancies.show', ['id' => $application['id']])"
+                        />
+                    @else
+                        <div class="student-profile-page__unavailable">
+                            <strong>{{ $application['title'] ?? 'Vacante no disponible' }}</strong>
+                            <span>Esta vacante ya no está publicada.</span>
+                        </div>
+                    @endif
+                </div>
 
             @empty
 

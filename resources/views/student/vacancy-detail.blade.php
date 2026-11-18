@@ -35,7 +35,15 @@
             >
                 Postularse
             </button>
-            @if($alreadyApplied)<span class="flow-feedback flow-feedback--success">Postulación enviada</span>@endif
+            @if($alreadyApplied)
+                @php
+                    $status = in_array($applicationStatus, ['pending', 'accepted', 'rejected']) ? $applicationStatus : 'pending';
+                    $statusLabel = ['pending' => 'Pendiente', 'accepted' => 'Aceptada', 'rejected' => 'Rechazada'][$status];
+                @endphp
+                <span class="vacancy-detail__application-status vacancy-detail__application-status--{{ $status }}" role="status">
+                    {{ $statusLabel }}
+                </span>
+            @endif
 
         </x-slot:actions>
 

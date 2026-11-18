@@ -141,12 +141,13 @@
         @if($application['student']['description'])
             <section class="company-applicant-profile__about"><h2>Sobre el estudiante</h2><p>{{ $application['student']['description'] }}</p></section>
         @endif
-        <p class="company-applicant-profile__status">Estado: {{ ['pending' => 'Pendiente', 'accepted' => 'Aceptada', 'rejected' => 'Rechazada'][$application['status']] ?? $application['status'] }}</p>
+        <p class="company-applicant-profile__status">Estado de esta postulación: <span class="company-applicant-profile__status-badge company-applicant-profile__status-badge--{{ in_array($application['status'], ['pending', 'accepted', 'rejected']) ? $application['status'] : 'pending' }}">{{ ['pending' => 'Pendiente', 'accepted' => 'Aceptada', 'rejected' => 'Rechazada'][$application['status']] ?? 'Pendiente' }}</span></p>
     </div>
 
 
     {{--  ACTIONS  --}}
 
+    @if($application['status'] === 'pending')
     <div class="company-applicant-profile__actions">
 
         <form method="POST" action="{{ route('company.applications.status', $application['id']) }}">
@@ -161,6 +162,9 @@
         </form>
 
     </div>
+    @else
+        <p class="company-applicant-profile__decision">La solicitud ya fue {{ $application['status'] === 'accepted' ? 'aceptada' : 'rechazada' }}.</p>
+    @endif
 
 </main>
 

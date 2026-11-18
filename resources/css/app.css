@@ -18,6 +18,7 @@
 @import './pages/login.css';
 @import './pages/register.css';
 @import './pages/student/index.css';
+@import './pages/student/vacancy-detail.css';
 @import './pages/student/company-profile.css';
 @import './pages/student/profile.css';
 @import './pages/student/bookmarks.css';
