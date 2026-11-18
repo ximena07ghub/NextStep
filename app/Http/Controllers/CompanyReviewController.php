@@ -12,13 +12,8 @@ class CompanyReviewController extends Controller
         $validated = $request->validate([
             'company_user_id' => 'required|string',
             'student_user_id' => 'required|string',
-            'job_title' => 'required|string',
-            'job_location' => 'required|string',
             'rating' => 'required|integer|min:1|max:5',
-            'review_title' => 'required|string',
-            'review_description' => 'required|string',
-            'employment_start_date' => 'required|date',
-            'employment_end_date' => 'required|date',
+            'review_description' => 'required|string|min:10|max:1500',
         ]);
 
         $review = CompanyReview::create($validated);
@@ -33,7 +28,10 @@ class CompanyReviewController extends Controller
     public function update(Request $request, $id)
     {
         $review = CompanyReview::findOrFail($id);
-        $review->update($request->all());
+        $review->update($request->validate([
+            'rating' => ['sometimes', 'required', 'integer', 'between:1,5'],
+            'review_description' => ['sometimes', 'required', 'string', 'min:10', 'max:1500'],
+        ]));
         return response()->json($review, 200);
     }
 

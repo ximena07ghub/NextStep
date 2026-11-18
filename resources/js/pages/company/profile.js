@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /*  ELEMENTOS  */
+    // elementos
 
     const editableFields = page.querySelectorAll(
         '[data-company-editable]'
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     )
 
 
-    /* SECTOR */
+    // sector
 
     const sectorView = page.querySelector(
         '[data-company-sector-view]'
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     )
 
 
-    /* CONTRASEÑA */
+    // contraseña
 
     const passwordFields = page.querySelector(
         '[data-company-password-fields]'
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     )
 
 
-    /* DESCRIPCIÓN */
+    // descripción
 
     const descriptionView = page.querySelector(
         '[data-company-description-view]'
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     )
 
 
-    /* LOGO */
+    // logo
 
     const logoInput = page.querySelector(
         '[data-company-logo]'
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let logoPreviewUrl = null
 
 
-    /*  DESCRIPCIÓN AUTOMÁTICA */
+    // descripción automática
 
     const resizeDescription = () => {
         if (!descriptionInput) {
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /*  SECTOR "OTRO"  */
+    // sector "otro"
 
     const updateCustomSector = () => {
         if (
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /*  MODO EDICIÓN  */
+    // modo edición
 
     const setEditing = (isEditing) => {
         page.classList.toggle(
@@ -134,14 +134,14 @@ document.addEventListener('DOMContentLoaded', () => {
         )
 
 
-        /* Estado y ciudad */
+        // estado y ciudad
 
         editableFields.forEach(field => {
             field.readOnly = !isEditing
         })
 
 
-        /* Sector */
+        // sector
 
         if (sectorView) {
             sectorView.hidden = isEditing
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCustomSector()
 
 
-        /* Contraseña */
+        // contraseña
 
         if (passwordFields) {
             passwordFields.hidden = !isEditing
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
 
 
-        /* Descripción */
+        // descripción
 
         if (descriptionView) {
             descriptionView.hidden = isEditing
@@ -178,14 +178,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        /* Logo */
+        // logo
 
         if (logoInput) {
             logoInput.disabled = !isEditing
         }
 
 
-        /* Botones */
+        // botones
 
         if (editButton) {
             editButton.hidden = isEditing
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /*  EDITAR  */
+    // editar
 
     editButton?.addEventListener('click', () => {
         setEditing(true)
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 
-    /*  CANCELAR  */
+    // cancelar
 
     cancelButton?.addEventListener('click', () => {
 
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 
-    /*  CAMBIO DE SECTOR  */
+    // cambio de sector
 
     sectorSelect?.addEventListener(
         'change',
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
     )
 
 
-    /*  DESCRIPCIÓN  */
+    // descripción
 
     descriptionInput?.addEventListener(
         'input',
@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
     )
 
 
-    /*  PREVIEW DEL LOGO  */
+    // preview del logo
 
     logoInput?.addEventListener('change', () => {
         const file = logoInput.files?.[0]
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 
-    /*  ESTADO INICIAL  */
+    // estado inicial
 
     const initialEdit =
         page.dataset.companyInitialEdit === 'true'
@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setEditing(initialEdit)
 
 
-    /*  LIMPIEZA  */
+    // limpieza
 
     window.addEventListener('beforeunload', () => {
         if (logoPreviewUrl) {

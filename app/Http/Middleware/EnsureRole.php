@@ -10,7 +10,7 @@ class EnsureRole
 {
     public function handle(Request $request, Closure $next, string $role): Response
     {
-        // auth:web se ejecuta antes; el rol se lee del usuario guardado en MongoDB.
+        // valida el rol del usuario autenticado
         abort_unless($request->user('web')?->role === $role, 403);
 
         $response = $next($request);
