@@ -6,6 +6,7 @@ use App\Models\Application;
 use App\Models\Bookmark;
 use App\Models\User;
 use App\Models\CompanyProfileView;
+use App\Models\CompanyReview;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -109,8 +110,9 @@ class StudentVacancyController extends Controller
         ];
         $vacancies = Vacancy::where('company_user_id', $id)->where('status', 'published')
             ->latest()->get()->map(fn (Vacancy $item) => $item->card($record));
-        $reviews = [];
+        $reviews = CompanyReview::where('company_user_id', $id)->latest()->get();
+        $averageRating = $reviews->count() ? round($reviews->avg('rating'), 1) : null;
 
-        return view('student.company-profile', compact('company', 'vacancies', 'reviews'));
+        return view('student.company-profile', compact('company', 'vacancies', 'reviews', 'averageRating'));
     }
 }
