@@ -299,7 +299,10 @@ class ApplicationController extends Controller
     {
         $application = Application::findOrFail($id);
 
-        $application->update($request->all());
+        $validated = $request->validate([
+            'status' => ['required', 'in:pending,accepted,rejected'],
+        ]);
+        $application->update($validated);
 
         return response()->json($application, 200);
     }
