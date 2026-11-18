@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // sector
 
         if (sectorView) {
-            sectorView.hidden = isEditing
+            sectorView.hidden = false
         }
 
         if (sectorSelect) {
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
     editButton?.addEventListener('click', () => {
         setEditing(true)
 
-        sectorSelect?.focus()
+        descriptionInput?.focus()
     })
 
 
