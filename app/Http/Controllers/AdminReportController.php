@@ -12,6 +12,7 @@ class AdminReportController extends Controller
 {
     public function index(Request $request)
     {
+        Vacancy::closeExpired();
         $filters = $request->validate([
             'report' => ['nullable', 'in:applications,students,vacancies,reviews'],
             'status' => ['nullable', 'in:pending,accepted,rejected,published,closed'],

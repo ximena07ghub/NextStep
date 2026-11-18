@@ -10,7 +10,7 @@
 
 
 
-    {{-- PARTE SUPERIOR --}}
+    {{-- encabezado --}}
 
     <section class="company-public-profile__top">
 
@@ -61,7 +61,7 @@
         </div>
 
 
-        {{-- DESCRIPCIÓN --}}
+        {{-- descripción --}}
 
         <section class="company-public-profile__description">
 
@@ -78,7 +78,7 @@
     </section>
 
 
-    {{-- PESTAÑAS --}}
+    {{-- pestañas --}}
 
     <div class="company-public-profile__tabs">
 
@@ -94,7 +94,7 @@
     </div>
 
 
-    {{--  VACANTES  --}}
+    {{-- vacantes --}}
 
     <section
         class="company-public-profile__vacancies"
