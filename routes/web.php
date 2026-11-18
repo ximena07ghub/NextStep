@@ -250,6 +250,12 @@ Route::prefix('admin')
         Route::get('/companies/{id}', [AdminController::class, 'company'])
             ->where('id', '[a-f0-9]{24}')
             ->name('companies.show');
+        Route::get('/companies/{id}/edit', [AdminController::class, 'editCompany'])
+            ->where('id', '[a-f0-9]{24}')
+            ->name('companies.edit');
+        Route::put('/companies/{id}', [AdminController::class, 'updateCompany'])
+            ->where('id', '[a-f0-9]{24}')
+            ->name('companies.update');
 
 
     });
