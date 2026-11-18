@@ -9,7 +9,7 @@
 <tr><td><strong>{{ $student['name'] }}</strong><small>{{ $student['email'] }}</small></td>
 <td>@if($student['cv_url'])<a class="admin-link" href="{{ $student['cv_url'] }}">Descargar CV</a>@else<span class="admin-badge admin-badge--neutral">Sin archivo</span>@endif</td>
 <td>@if($student['kardex_url'])<a class="admin-link" href="{{ $student['kardex_url'] }}">Descargar kárdex</a>@else<span class="admin-badge admin-badge--neutral">Sin archivo</span>@endif</td>
-<td><a class="admin-link" href="{{ route('admin.students.show', $student['id']) }}">Ver perfil</a></td></tr>
+<td><a class="admin-link" href="{{ route('admin.students.show', $student['id']) }}">Ver perfil</a> · <a class="admin-link" href="{{ route('admin.students.edit', $student['id']) }}">Editar</a></td></tr>
 @empty<tr><td colspan="4" class="admin-empty">No hay estudiantes que coincidan con la búsqueda.</td></tr>@endforelse
 </tbody></table></div>
 @include('components.admin.pagination', ['records' => $students])

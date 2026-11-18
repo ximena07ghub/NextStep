@@ -122,6 +122,45 @@ class AdminController extends Controller
         return ($request->expectsJson() || $request->is('api/*')) ? response()->json(compact('company', 'vacancies', 'applications')) : view('admin.companies.show', compact('company', 'vacancies', 'applications'));
     }
 
+    public function editStudent(string $id)
+    {
+        $student = User::where('role', 'student')->findOrFail($id);
+        return view('admin.students.edit', compact('student'));
+    }
+
+    public function updateStudent(Request $request, string $id)
+    {
+        $student = User::where('role', 'student')->findOrFail($id);
+        $data = $request->validate([
+            'first_name' => 'required|string|max:100',
+            'paternal_last_name' => 'required|string|max:100',
+            'maternal_last_name' => 'nullable|string|max:100',
+            'phone' => 'nullable|string|max:30',
+        ]);
+        $student->update($data);
+        return redirect()->route('admin.students.show', $id)->with('status', 'Estudiante actualizado.');
+    }
+
+    public function editCompany(string $id)
+    {
+        $company = User::where('role', 'company')->findOrFail($id);
+        return view('admin.companies.edit', compact('company'));
+    }
+
+    public function updateCompany(Request $request, string $id)
+    {
+        $company = User::where('role', 'company')->findOrFail($id);
+        $data = $request->validate([
+            'company_name' => 'required|string|max:150',
+            'rfc' => 'required|string|max:20',
+            'description' => 'nullable|string|max:2000',
+            'state' => 'nullable|string|max:100',
+            'city' => 'nullable|string|max:100',
+        ]);
+        $company->update($data);
+        return redirect()->route('admin.companies.show', $id)->with('status', 'Empresa actualizada.');
+    }
+
     public function payments(Request $request): mixed
     {
         $filters = $request->validate([
