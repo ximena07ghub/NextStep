@@ -677,9 +677,7 @@
 }
 
 
-/* ========================================
-   ELEMENTOS CONTROLADOS POR JAVASCRIPT
-======================================== */
+/* elementos controlados por javascript */
 
 .vacancy-search__advanced[hidden],
 .vacancy-search__sector-menu[hidden] {

@@ -1,6 +1,4 @@
-/* =========================
-   MEMBERSHIP PAGE
-========================= */
+/* membership page */
 
 .membership-page {
     width: calc(100% - 80px);
@@ -19,9 +17,7 @@
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* header */
 
 .membership-page__header {
     width: 100%;
@@ -62,9 +58,7 @@
 }
 
 
-/* =========================
-   CONTENT
-========================= */
+/* content */
 
 .membership-page__content {
     width: 100%;
@@ -77,9 +71,7 @@
 }
 
 
-/* =========================
-   CURRENT MEMBERSHIP
-========================= */
+/* current membership */
 
 .membership-page__current {
     width: 751px;
@@ -144,9 +136,7 @@
 }
 
 
-/* =========================
-   BENEFITS CARD
-========================= */
+/* benefits card */
 
 .membership-benefits {
     width: 680px;
@@ -164,9 +154,7 @@
 }
 
 
-/* =========================
-   PLAN COLORS
-========================= */
+/* plan colors */
 
 .membership-benefits--basic {
     background: linear-gradient(
@@ -193,9 +181,7 @@
 }
 
 
-/* =========================
-   BENEFITS HEADER
-========================= */
+/* benefits header */
 
 .membership-benefits__header {
     width: 100%;
@@ -219,9 +205,7 @@
 }
 
 
-/* =========================
-   CHANGE MEMBERSHIP
-========================= */
+/* change membership */
 
 .membership-benefits__change {
     padding: 0;
@@ -256,9 +240,7 @@
 }
 
 
-/* =========================
-   BENEFITS LIST
-========================= */
+/* benefits list */
 
 .membership-benefits__list {
     width: 100%;
@@ -300,9 +282,7 @@
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* responsive */
 
 @media (max-width: 900px) {
 

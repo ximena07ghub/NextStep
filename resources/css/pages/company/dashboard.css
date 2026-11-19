@@ -1,6 +1,4 @@
-/* ========================================
-   COMPANY DASHBOARD
-======================================== */
+/* company dashboard */
 
 .company-dashboard {
     width: 1067px;
@@ -18,9 +16,7 @@
 }
 
 
-/* ========================================
-   HEADER
-======================================== */
+/* header */
 
 .company-dashboard__header {
     width: 100%;
@@ -62,9 +58,7 @@
 }
 
 
-/* ========================================
-   MAIN CONTENT
-======================================== */
+/* main content */
 
 .company-dashboard__content {
     width: 1048px;
@@ -78,9 +72,7 @@
 }
 
 
-/* ========================================
-   SUMMARY CARDS
-======================================== */
+/* summary cards */
 
 .company-dashboard__summary {
     width: 100%;
@@ -116,9 +108,7 @@
 }
 
 
-/* ========================================
-   SUMMARY TOP
-======================================== */
+/* summary top */
 
 .company-dashboard__summary-top {
     width: 100%;
@@ -163,9 +153,7 @@
 }
 
 
-/* ========================================
-   SUMMARY DESCRIPTION
-======================================== */
+/* summary description */
 
 .company-dashboard__summary-description {
     width: 100%;
@@ -183,9 +171,7 @@
 }
 
 
-/* ========================================
-   BOTTOM
-======================================== */
+/* bottom */
 
 .company-dashboard__bottom {
     width: 100%;
@@ -199,9 +185,7 @@
 }
 
 
-/* ========================================
-   REACH CARD
-======================================== */
+/* reach card */
 
 .company-dashboard__reach-card {
     width: 314px;
@@ -279,9 +263,7 @@
 }
 
 
-/* ========================================
-   APPLICATIONS CARD
-======================================== */
+/* applications card */
 
 .company-dashboard__applications-card {
     width: 680px;
@@ -306,9 +288,7 @@
 }
 
 
-/* ========================================
-   APPLICATIONS HEADER
-======================================== */
+/* applications header */
 
 .company-dashboard__applications-header {
     width: 100%;
@@ -364,9 +344,7 @@
 }
 
 
-/* ========================================
-   APPLICATIONS TABLE
-======================================== */
+/* applications table */
 
 .company-dashboard__applications-table {
     width: 100%;
@@ -405,9 +383,7 @@
 }
 
 
-/* ========================================
-   TABLE HEADER
-======================================== */
+/* table header */
 
 .company-dashboard__application-row--header {
     min-height: 34px;
@@ -417,9 +393,7 @@
 }
 
 
-/* ========================================
-   APPLICATION TEXT
-======================================== */
+/* application text */
 
 .company-dashboard__application-name,
 .company-dashboard__application-cv {
@@ -431,18 +405,14 @@
 }
 
 
-/* ========================================
-   LAST ROW
-======================================== */
+/* last row */
 
 .company-dashboard__application-row:last-child {
     border-bottom: none;
 }
 
 
-/* ========================================
-   EMPTY APPLICATIONS
-======================================== */
+/* empty applications */
 
 .company-dashboard__empty {
     width: 100%;
@@ -459,9 +429,7 @@
 }
 
 
-/* ========================================
-   APPLICATION STATUS
-======================================== */
+/* application status */
 
 .company-dashboard__status {
     width: max-content;
@@ -506,9 +474,7 @@
 }
 
 
-/* ========================================
-   RESPONSIVE
-======================================== */
+/* responsive */
 
 @media (max-width: 1250px) {
 

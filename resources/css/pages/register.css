@@ -1,6 +1,4 @@
-/* ========================================
-   REGISTER PAGE
-======================================== */
+/* register page */
 
 .register-page {
   width: 100%;
@@ -28,9 +26,7 @@
 .register-page__left, .student-register, .company-register { height: auto; min-height: 831px; }
 .register-page__content { align-items: flex-start; }
 
-/* ========================================
-   LOGO
-======================================== */
+/* logo */
 
 .register-page__logo-link {
   display: inline-flex;
@@ -45,9 +41,7 @@
   object-fit: contain;
 }
 
-/* ========================================
-   CONTENIDO PRINCIPAL
-======================================== */
+/* contenido principal */
 
 .register-page__content {
   width: 100%;
@@ -59,9 +53,7 @@
   gap: 0;
 }
 
-/* ========================================
-   LADO IZQUIERDO
-======================================== */
+/* lado izquierdo */
 
 .register-page__left {
   width: 530px;
@@ -76,9 +68,7 @@
   overflow: visible;
 }
 
-/* ========================================
-   IMAGEN DERECHA
-======================================== */
+/* imagen derecha */
 
 .register-page__image-wrapper {
   width: 694px;
@@ -100,9 +90,7 @@
   object-fit: cover;
 }
 
-/* ========================================
-   ACCOUNT TYPE SELECTOR
-======================================== */
+/* account type selector */
 
 .account-type {
   width: 509px;
@@ -115,9 +103,7 @@
   gap: 64px;
 }
 
-/* ========================================
-   ENCABEZADO
-======================================== */
+/* encabezado */
 
 .account-type__header {
   width: 509px;
@@ -162,9 +148,7 @@
   font-style: italic;
 }
 
-/* ========================================
-   OPCIONES
-======================================== */
+/* opciones */
 
 .account-type__options {
   width: 387px;
@@ -175,9 +159,7 @@
   gap: 31px;
 }
 
-/* ========================================
-   TARJETA
-======================================== */
+/* tarjeta */
 
 .account-type__card {
   width: 100%;
@@ -221,9 +203,7 @@
   transform: translateY(-2px);
 }
 
-/* ========================================
-   TEXTO TARJETAS
-======================================== */
+/* texto tarjetas */
 
 .account-type__card-title {
   width: 100%;
@@ -251,9 +231,7 @@
   text-align: center;
 }
 
-/* ========================================
-   RESPONSIVE
-======================================== */
+/* responsive */
 
 @media (max-width: 1200px) {
   .register-page__content {
@@ -337,9 +315,7 @@
 }
 
 
-/* ========================================
-   SLIDE ENTRE TIPOS DE REGISTRO
-======================================== */
+/* slide entre tipos de registro */
 
 /* Avanzar */
 
@@ -382,9 +358,7 @@
 
 
 
-/* ========================================
-   STUDENT REGISTER
-======================================== */
+/* student register */
 
 .student-register {
   width: 530px;
@@ -405,9 +379,7 @@
   gap: 41px;
 }
 
-/* ========================================
-   ENCABEZADO
-======================================== */
+/* encabezado */
 
 .student-register__header {
   width: 520px;
@@ -465,9 +437,7 @@
   text-align: left;
 }
 
-/* ========================================
-   FORMULARIO
-======================================== */
+/* formulario */
 
 .student-register__form {
   width: 100%;
@@ -500,9 +470,7 @@
   line-height: 21px;
 }
 
-/* ========================================
-   INPUTS
-======================================== */
+/* inputs */
 
 .student-register__input {
   width: 100%;
@@ -536,9 +504,7 @@
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.04);
 }
 
-/* ========================================
-   FECHA + TELÉFONO
-======================================== */
+/* fecha + teléfono */
 
 .student-register__row {
   width: 100%;
@@ -558,9 +524,7 @@
   width: 323px;
 }
 
-/* ========================================
-   FECHA
-======================================== */
+/* fecha */
 
 .student-register__date-wrapper {
   width: 100%;
@@ -611,9 +575,7 @@
   pointer-events: none;
 }
 
-/* ========================================
-   BOTÓN CONFIRMAR
-======================================== */
+/* botón confirmar */
 
 .student-register__confirm {
   min-width: 136px;
@@ -655,9 +617,7 @@
   transform: translateY(0);
 }
 
-/* ========================================
-   RESPONSIVE STUDENT REGISTER
-======================================== */
+/* responsive student register */
 
 @media (max-width: 600px) {
   .student-register,
@@ -682,9 +642,7 @@
   }
 }
 
-/* ========================================
-   SLIDER STUDENT REGISTER
-======================================== */
+/* slider student register */
 
 .student-register__slider {
   width: 100%;
@@ -738,9 +696,7 @@
   opacity: 0;
 }
 
-/* ========================================
-   VERIFICACIÓN ESCOLAR
-======================================== */
+/* verificación escolar */
 
 .student-register__verification {
   width: 530px;
@@ -753,9 +709,7 @@
   gap: 61px;
 }
 
-/* ========================================
-   ENCABEZADO VERIFICACIÓN
-======================================== */
+/* encabezado verificación */
 
 .student-register__verification-header {
   width: 520px;
@@ -807,9 +761,7 @@
   text-align: center;
 }
 
-/* ========================================
-   TARJETA KARDEX
-======================================== */
+/* tarjeta kardex */
 
 .student-register__kardex-card {
   width: 310px;
@@ -901,17 +853,13 @@
   white-space: nowrap;
 }
 
-/* ========================================
-   CONFIRMAR KARDEX
-======================================== */
+/* confirmar kardex */
 
 .student-register__confirm--kardex {
   margin-top: 0;
 }
 
-/* ========================================
-   RESPONSIVE
-======================================== */
+/* responsive */
 
 @media (max-width: 600px) {
   .student-register__verification,
@@ -934,9 +882,7 @@
 }
 
 
-/* ========================================
-   COMPANY REGISTER
-======================================== */
+/* company register */
 
 .company-register {
   width: 530px;
@@ -958,9 +904,7 @@
   gap: 41px;
 }
 
-/* ========================================
-   ENCABEZADO EMPRESA
-======================================== */
+/* encabezado empresa */
 
 .company-register__header {
   width: 520px;
@@ -987,9 +931,7 @@
   text-align: left;
 }
 
-/* ========================================
-   FORMULARIO EMPRESA
-======================================== */
+/* formulario empresa */
 
 .company-register__form {
   width: 530px;
@@ -1022,9 +964,7 @@
   line-height: 21px;
 }
 
-/* ========================================
-   INPUTS EMPRESA
-======================================== */
+/* inputs empresa */
 
 .company-register__input {
   width: 100%;
@@ -1058,9 +998,7 @@
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.04);
 }
 
-/* ========================================
-   SECTOR PERSONALIZADO
-======================================== */
+/* sector personalizado */
 
 .company-register__custom-sector {
   margin-top: 5px;
@@ -1071,9 +1009,7 @@
   opacity: 1;
 }
 
-/* ========================================
-   DROPDOWN SECTOR
-======================================== */
+/* dropdown sector */
 
 .company-register__sector-dropdown {
   width: 100%;
@@ -1126,9 +1062,7 @@
 }
 
 
-/* ========================================
-   CHEVRON
-======================================== */
+/* chevron */
 
 .company-register__select-icon {
   width: 20px;
@@ -1144,9 +1078,7 @@
 }
 
 
-/* ========================================
-   CAJA DESPLEGABLE
-======================================== */
+/* caja desplegable */
 
 .company-register__sector-menu {
   width: 100%;
@@ -1181,9 +1113,7 @@
 }
 
 
-/* ========================================
-   OPCIONES
-======================================== */
+/* opciones */
 
 .company-register__sector-option {
   width: 100%;
@@ -1218,9 +1148,7 @@
 }
 
 
-/* ========================================
-   SCROLLBAR
-======================================== */
+/* scrollbar */
 
 .company-register__sector-menu::-webkit-scrollbar {
   width: 6px;
@@ -1233,9 +1161,7 @@
 }
 
 
-/* ========================================
-   ANIMACIÓN DROPDOWN
-======================================== */
+/* animación dropdown */
 
 .sector-dropdown-enter-active,
 .sector-dropdown-leave-active {
@@ -1251,9 +1177,7 @@
   transform: translateY(-5px);
 }
 
-/* ========================================
-   ANIMACIÓN INPUT "OTRO"
-======================================== */
+/* animación input "otro" */
 
 .sector-input-enter-active,
 .sector-input-leave-active {
@@ -1268,9 +1192,7 @@
   transform: translateY(-6px);
 }
 
-/* ========================================
-   ESTADO + CIUDAD
-======================================== */
+/* estado + ciudad */
 
 .company-register__row {
   width: 100%;
@@ -1293,17 +1215,13 @@
   flex-shrink: 0;
 }
 
-/* ========================================
-   BOTÓN EMPRESA
-======================================== */
+/* botón empresa */
 
 .company-register__confirm {
   margin-top: 9px;
 }
 
-/* ========================================
-   RESPONSIVE EMPRESA
-======================================== */
+/* responsive empresa */
 
 @media (max-width: 600px) {
   .company-register,
@@ -1335,9 +1253,7 @@
   }
 }
 
-/* ========================================
-   COMPANY MEMBERSHIP STEP
-======================================== */
+/* company membership step */
 
 .company-membership {
   width: 100%;
@@ -1348,9 +1264,7 @@
   align-items: flex-start;
 }
 
-/* ========================================
-   PLANES
-======================================== */
+/* planes */
 
 .company-membership__plans {
   width: 530px;
@@ -1391,9 +1305,7 @@
   text-align: left;
 }
 
-/* ========================================
-   OPCIONES DE MEMBRESÍA
-======================================== */
+/* opciones de membresía */
 
 .company-membership__options {
   width: 387px;
@@ -1496,9 +1408,7 @@
   text-align: center;
 }
 
-/* ========================================
-   PAGO
-======================================== */
+/* pago */
 
 .company-membership__payment {
   width: 694px;
@@ -1530,9 +1440,7 @@
   text-align: center;
 }
 
-/* ========================================
-   FORMULARIO DE PAGO
-======================================== */
+/* formulario de pago */
 
 .company-membership__payment-form {
   width: 530px;
@@ -1601,9 +1509,7 @@
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.04);
 }
 
-/* ========================================
-   DATOS DE TARJETA
-======================================== */
+/* datos de tarjeta */
 
 .company-membership__card-details {
   width: 100%;
@@ -1640,9 +1546,7 @@
   border-radius: 0 0 9px 0;
 }
 
-/* ========================================
-   BOTÓN DE PAGO
-======================================== */
+/* botón de pago */
 
 .company-membership__payment-button {
   min-width: 249px;
@@ -1684,10 +1588,7 @@
   transform: translateY(0);
 }
 
-/* ========================================
-   REGISTER FULL FLOW
-   Empresa + imagen ⇄ Membresía + pago
-======================================== */
+/* register full flow empresa + imagen ⇄ membresía + pago */
 
 .register-flow {
   width: 100%;
@@ -1712,9 +1613,7 @@
 }
 
 
-/* ========================================
-   PANTALLA PRINCIPAL
-======================================== */
+/* pantalla principal */
 
 .register-flow__stage--main {
   transform: translateX(0);
@@ -1730,9 +1629,7 @@
 }
 
 
-/* ========================================
-   MEMBRESÍA + PAGO
-======================================== */
+/* membresía + pago */
 
 .register-flow__stage--membership {
   transform: translateX(100%);
@@ -1751,9 +1648,7 @@
 }
 
 
-/* ========================================
-   SLIDES BLADE / JAVASCRIPT
-======================================== */
+/* slides blade / javascript */
 
 [data-register-screen],
 [data-student-step] {
