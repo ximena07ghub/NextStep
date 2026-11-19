@@ -46,9 +46,7 @@ if (companyApplications) {
         )
 
 
-    /* ========================================
-       ABRIR / CERRAR
-    ======================================== */
+    /* abrir / cerrar */
 
     const closeDropdown = () => {
 
@@ -92,9 +90,7 @@ if (companyApplications) {
     })
 
 
-    /* ========================================
-       FILTRAR
-    ======================================== */
+    /* filtrar */
 
     options?.forEach((option) => {
 
@@ -157,9 +153,7 @@ if (companyApplications) {
     })
 
 
-    /* ========================================
-       CERRAR AL HACER CLIC FUERA
-    ======================================== */
+    /* cerrar al hacer clic fuera */
 
     document.addEventListener('click', (event) => {
 

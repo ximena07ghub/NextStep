@@ -1,6 +1,4 @@
-/* ========================================
-   VACANCY DETAIL
-======================================== */
+/* vacancy detail */
 
 .vacancy-detail {
     width: 100%;
@@ -16,9 +14,7 @@
 }
 
 
-/* ========================================
-   CONTENIDO PRINCIPAL
-======================================== */
+/* contenido principal */
 
 .vacancy-detail__main {
     width: 700px;
@@ -31,9 +27,7 @@
 }
 
 
-/* ========================================
-   ENCABEZADO
-======================================== */
+/* encabezado */
 
 .vacancy-detail__header {
     width: 100%;
@@ -99,9 +93,7 @@
 }
 
 
-/* ========================================
-   TÍTULOS DE SECCIÓN
-======================================== */
+/* títulos de sección */
 
 .vacancy-detail__section-title {
     width: 100%;
@@ -118,9 +110,7 @@
 }
 
 
-/* ========================================
-   INFORMACIÓN DE EMPLEO
-======================================== */
+/* información de empleo */
 
 .vacancy-detail__employment {
     width: 100%;
@@ -188,9 +178,7 @@
 }
 
 
-/* ========================================
-   PRESTACIONES
-======================================== */
+/* prestaciones */
 
 .vacancy-detail__benefits {
     width: 462px;
@@ -227,9 +215,7 @@
 }
 
 
-/* ========================================
-   DESCRIPCIÓN
-======================================== */
+/* descripción */
 
 .vacancy-detail__description {
     width: 100%;
@@ -258,9 +244,7 @@
 }
 
 
-/* ========================================
-   PANEL DE ACCIONES
-======================================== */
+/* panel de acciones */
 
 .vacancy-detail__actions {
     width: 157px;
@@ -275,9 +259,7 @@
 .vacancy-detail__actions--bottom { width: 100%; flex-direction: row; align-items: center; justify-content: flex-start; margin-top: -20px; }
 
 
-/* ========================================
-   GUARDAR VACANTE
-======================================== */
+/* guardar vacante */
 
 .vacancy-detail__bookmark {
     width: 50px;
@@ -305,9 +287,7 @@
 }
 
 
-/* ========================================
-   BOTÓN PRINCIPAL
-======================================== */
+/* botón principal */
 
 .vacancy-detail__primary-button {
     width: 157px;
@@ -348,9 +328,7 @@
 }
 
 
-/* ========================================
-   PÁGINA
-======================================== */
+/* página */
 
 .vacancy-detail-page {
     width: 100%;
@@ -361,9 +339,7 @@
 }
 
 
-/* ========================================
-   RESPONSIVE
-======================================== */
+/* responsive */
 
 @media (max-width: 1350px) {
     .vacancy-detail {

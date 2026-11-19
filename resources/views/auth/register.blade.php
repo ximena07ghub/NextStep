@@ -35,10 +35,7 @@
         <!-- Flujo completo del registro -->
         <div class="register-flow">
 
-            <!-- =========================================
-                 ETAPA PRINCIPAL
-                 Selector / estudiante / empresa + imagen; el pago pertenece a otro bloque
-            ========================================== -->
+            <!-- etapa principal selector / estudiante / empresa + imagen; el pago pertenece a otro bloque -->
             <div
                 class="
                     register-flow__stage

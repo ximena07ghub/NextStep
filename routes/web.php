@@ -13,7 +13,6 @@ use App\Http\Controllers\StudentVacancyController;
 use App\Http\Controllers\StudentCompanyReviewController;
 use Illuminate\Support\Facades\Route;
 
-// ------- paginas publicas -------
 
 // pagina de inicio
 Route::view('/', 'home')->name('home');
@@ -51,7 +50,6 @@ Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth:web')
     ->name('logout');
 
-// ------- rutas del estudiante -------
 
 // estas rutas solo las puede usar un estudiante con sesion
 Route::prefix('student')
@@ -67,7 +65,6 @@ Route::prefix('student')
         Route::get('/bookmarks', [StudentVacancyController::class, 'bookmarks'])
             ->name('bookmarks');
 
-        // ------- perfil del estudiante -------
 
         // muestra el perfil
         Route::get('/profile', [ProfileController::class, 'student'])
@@ -85,7 +82,6 @@ Route::prefix('student')
         Route::get('/profile/kardex', [ProfileController::class, 'kardex'])
             ->name('profile.kardex');
 
-        // ------- vacantes y postulaciones -------
 
         // muestra el detalle de una vacante
         Route::get('/vacancies/{id}', [StudentVacancyController::class, 'show'])
@@ -116,7 +112,6 @@ Route::prefix('student')
             ->name('companies.show');
     });
 
-// ------- rutas de la empresa -------
 
 // estas rutas solo las puede usar una empresa con sesion
 Route::prefix('company')
@@ -128,7 +123,6 @@ Route::prefix('company')
         Route::get('/', [CompanyVacancyController::class, 'dashboard'])
             ->name('home');
 
-        // ------- vacantes de la empresa -------
 
         // muestra las vacantes publicadas
         Route::get('/vacancies', [CompanyVacancyController::class, 'index'])
@@ -162,7 +156,6 @@ Route::prefix('company')
         Route::get('/vacancies/{id}', [CompanyVacancyController::class, 'show'])
             ->name('vacancies.show');
 
-        // ------- solicitudes recibidas -------
 
         // muestra las postulaciones de la empresa
         Route::get('/applications', [ApplicationController::class, 'companyIndex'])
@@ -186,7 +179,6 @@ Route::prefix('company')
         Route::get('/ratings', [CompanyRatingsController::class, 'index'])
             ->name('ratings');
 
-        // ------- membresia -------
 
         // muestra la membresia y sus solicitudes
         Route::get('/membership', [CompanyMembershipController::class, 'index'])
@@ -199,7 +191,6 @@ Route::prefix('company')
         Route::post('/membership/checkout', [CompanyMembershipController::class, 'checkout'])
             ->middleware('throttle:5,1')->name('membership.checkout');
 
-        // ------- perfil de la empresa -------
 
         // muestra el perfil
         Route::get('/profile', [ProfileController::class, 'company'])
@@ -210,7 +201,6 @@ Route::prefix('company')
             ->name('profile.update');
     });
 
-// ------- rutas del administrador -------
 
 // estas rutas solo las puede usar un administrador
 Route::prefix('admin')
@@ -222,11 +212,9 @@ Route::prefix('admin')
         Route::redirect('/', '/admin/students')
             ->name('home');
 
-        // ------- reportes -------
         Route::get('/reports', [AdminReportController::class, 'index'])
             ->name('reports.index');
 
-        // ------- estudiantes -------
 
         // muestra la lista de estudiantes
         Route::get('/students', [AdminController::class, 'students'])
@@ -254,7 +242,6 @@ Route::prefix('admin')
         Route::delete('/students/{id}', [AdminController::class, 'deleteStudent'])
             ->where('id', '[a-f0-9]{24}')->name('students.destroy');
 
-        // ------- empresas -------
 
         // muestra la lista de empresas
         Route::get('/companies', [AdminController::class, 'companies'])

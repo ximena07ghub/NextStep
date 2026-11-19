@@ -1,6 +1,4 @@
-/* ========================================
-   STUDENT PROFILE CARD
-======================================== */
+/* student profile card */
 
 .student-profile-card {
     width: 296px;
@@ -12,18 +10,14 @@
 }
 
 
-/* ========================================
-   ELEMENTOS OCULTOS
-======================================== */
+/* elementos ocultos */
 
 .student-profile-card [hidden] {
     display: none !important;
 }
 
 
-/* ========================================
-   FONDO
-======================================== */
+/* fondo */
 
 .student-profile-card__background {
     width: 288px;
@@ -49,9 +43,7 @@
 }
 
 
-/* ========================================
-   CONTENIDO
-======================================== */
+/* contenido */
 
 .student-profile-card__content {
     width: 199px;
@@ -67,9 +59,7 @@
 }
 
 
-/* ========================================
-   IDENTIDAD
-======================================== */
+/* identidad */
 
 .student-profile-card__identity {
     width: 100%;
@@ -82,9 +72,7 @@
 }
 
 
-/* ========================================
-   AVATAR
-======================================== */
+/* avatar */
 
 .student-profile-card__avatar-wrapper {
     width: 199px;
@@ -176,9 +164,7 @@
 }
 
 
-/* ========================================
-   NOMBRE
-======================================== */
+/* nombre */
 
 .student-profile-card__name {
     width: 100%;
@@ -221,9 +207,7 @@
 }
 
 
-/* ========================================
-   INFORMACIÓN
-======================================== */
+/* información */
 
 .student-profile-card__information {
     width: 182px;
@@ -256,9 +240,7 @@
 }
 
 
-/* ========================================
-   FILAS DE INFORMACIÓN
-======================================== */
+/* filas de información */
 
 .student-profile-card__info-row {
     width: 100%;
@@ -298,9 +280,7 @@
 }
 
 
-/* ========================================
-   DOCUMENTOS
-======================================== */
+/* documentos */
 
 .student-profile-card__document {
     min-height: 38px;
@@ -344,9 +324,7 @@
 }
 
 
-/* ========================================
-   EDITAR DATOS
-======================================== */
+/* editar datos */
 
 .student-profile-card__edit {
     min-width: 143px;
@@ -389,9 +367,7 @@
 }
 
 
-/* ========================================
-   MODO EDICIÓN
-======================================== */
+/* modo edición */
 
 .student-profile-card--editing {
     height: auto;
@@ -420,9 +396,7 @@
 }
 
 
-/* ========================================
-   NOMBRE - EDICIÓN
-======================================== */
+/* nombre - edición */
 
 .student-profile-card--editing
 .student-profile-card__name {
@@ -449,9 +423,7 @@
 }
 
 
-/* ========================================
-   INFORMACIÓN - EDICIÓN
-======================================== */
+/* información - edición */
 
 .student-profile-card--editing
 .student-profile-card__information {
@@ -483,9 +455,7 @@
 }
 
 
-/* ========================================
-   CAMPOS EDITABLES
-======================================== */
+/* campos editables */
 
 .student-profile-card__edit-field {
     width: 182px;
@@ -544,9 +514,7 @@
 }
 
 
-/* ========================================
-   FECHA DE NACIMIENTO - EDICIÓN
-======================================== */
+/* fecha de nacimiento - edición */
 
 .student-profile-card__birth-date-edit {
     width: 182px;
@@ -572,9 +540,7 @@
 }
 
 
-/* ========================================
-   BOTONES DE EDICIÓN
-======================================== */
+/* botones de edición */
 
 .student-profile-card__edit-actions {
     margin-top: 29px;
@@ -634,9 +600,7 @@
     transform: translateY(0);
 }
 
-/* ========================================
-   CAMPO NO EDITABLE
-======================================== */
+/* campo no editable */
 
 .student-profile-card__edit-input--readonly {
     background: rgba(255, 255, 255, 0.35);

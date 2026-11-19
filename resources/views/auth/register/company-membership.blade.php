@@ -1,8 +1,6 @@
 <div class="company-membership">
 
-    <!-- =====================================
-         MEMBRESÍAS
-    ====================================== -->
+    <!-- membresías -->
 
     <section class="company-membership__plans">
 
@@ -104,9 +102,7 @@
     </section>
 
 
-    <!-- =====================================
-         DATOS DE PAGO
-    ====================================== -->
+    <!-- datos de pago -->
 
     <section class="company-membership__payment">
 

@@ -1,8 +1,6 @@
 @import '../../components/rating-modal.css';
 
-/* ========================================
-   COMPANY PUBLIC PROFILE
-======================================== */
+/* company public profile */
 
 .company-public-profile {
     width: 100%;
@@ -19,9 +17,7 @@
 }
 
 
-/* ========================================
-   PARTE SUPERIOR
-======================================== */
+/* parte superior */
 
 .company-public-profile__top {
     width: 1276px;
@@ -34,9 +30,7 @@
 }
 
 
-/* ========================================
-   ENCABEZADO
-======================================== */
+/* encabezado */
 
 .company-public-profile__header {
     width: 100%;
@@ -49,9 +43,7 @@
 }
 
 
-/* ========================================
-   IDENTIDAD
-======================================== */
+/* identidad */
 
 .company-public-profile__identity {
     display: flex;
@@ -61,9 +53,7 @@
 }
 
 
-/* ========================================
-   LOGO
-======================================== */
+/* logo */
 
 .company-public-profile__logo {
     width: 157px;
@@ -81,9 +71,7 @@
 }
 
 
-/* ========================================
-   NOMBRE + RATING
-======================================== */
+/* nombre + rating */
 
 .company-public-profile__identity-info {
     width: 455px;
@@ -110,9 +98,7 @@
 }
 
 
-/* ========================================
-   VALORACIÓN
-======================================== */
+/* valoración */
 
 .company-public-profile__rating {
     display: flex;
@@ -143,9 +129,7 @@
 }
 
 
-/* ========================================
-   DEJAR UNA VALORACIÓN
-======================================== */
+/* dejar una valoración */
 
 .company-public-profile__rating-button {
     width: 266px;
@@ -184,9 +168,7 @@
 }
 
 
-/* ========================================
-   TÍTULOS
-======================================== */
+/* títulos */
 
 .company-public-profile__section-title {
     width: 100%;
@@ -207,9 +189,7 @@
 }
 
 
-/* ========================================
-   DESCRIPCIÓN
-======================================== */
+/* descripción */
 
 .company-public-profile__description {
     width: 100%;
@@ -238,9 +218,7 @@
 }
 
 
-/* ========================================
-   INFORMACIÓN SECUNDARIA
-======================================== */
+/* información secundaria */
 
 .company-public-profile__meta {
     display: flex;
@@ -250,9 +228,7 @@
 }
 
 
-/* ========================================
-   SECTOR
-======================================== */
+/* sector */
 
 .company-public-profile__sector {
     color: #8c8282;
@@ -265,9 +241,7 @@
 }
 
 
-/* ========================================
-   SELECTOR
-======================================== */
+/* selector */
 
 .company-public-profile__tabs {
     width: 100%;
@@ -320,9 +294,7 @@
 }
 
 
-/* ========================================
-   VACANTES
-======================================== */
+/* vacantes */
 
 .company-public-profile__vacancies {
     width: 100%;
@@ -339,9 +311,7 @@
 }
 
 
-/* ========================================
-   VALORACIONES
-======================================== */
+/* valoraciones */
 
 .company-public-profile__reviews {
     width: 100%;
@@ -356,9 +326,7 @@
 }
 
 
-/* ========================================
-   PUNTUACIÓN GENERAL
-======================================== */
+/* puntuación general */
 
 .company-public-profile__score {
     width: 313px;
@@ -420,9 +388,7 @@
 }
 
 
-/* ========================================
-   CONTENIDO DE VALORACIONES
-======================================== */
+/* contenido de valoraciones */
 
 .company-public-profile__reviews-content {
     width: 711px;
@@ -435,9 +401,7 @@
 }
 
 
-/* ========================================
-   CABECERA DE VALORACIONES
-======================================== */
+/* cabecera de valoraciones */
 
 .company-public-profile__reviews-header {
     width: 100%;
@@ -456,9 +420,7 @@
 }
 
 
-/* ========================================
-   DROPDOWN
-======================================== */
+/* dropdown */
 
 .company-public-profile__sort {
     width: 241px;
@@ -520,9 +482,7 @@
 }
 
 
-/* ========================================
-   MENÚ DEL DROPDOWN
-======================================== */
+/* menú del dropdown */
 
 .company-public-profile__sort-menu {
     width: 241px;
@@ -577,9 +537,7 @@
 }
 
 
-/* ========================================
-   LISTADO
-======================================== */
+/* listado */
 
 .company-public-profile__review-list {
     width: 100%;
@@ -592,9 +550,7 @@
 }
 
 
-/* ========================================
-   VALORACIÓN INDIVIDUAL
-======================================== */
+/* valoración individual */
 
 .company-public-profile__review {
     width: 100%;
@@ -607,9 +563,7 @@
 }
 
 
-/* ========================================
-   ESTRELLAS + FECHA
-======================================== */
+/* estrellas + fecha */
 
 .company-public-profile__review-rating {
     display: flex;
@@ -643,9 +597,7 @@
 }
 
 
-/* ========================================
-   INFORMACIÓN DE LA VALORACIÓN
-======================================== */
+/* información de la valoración */
 
 .company-public-profile__review-info {
     display: flex;
@@ -669,9 +621,7 @@
 }
 
 
-/* ========================================
-   COMENTARIO
-======================================== */
+/* comentario */
 
 .company-public-profile__review-comment {
     width: 100%;
@@ -688,9 +638,7 @@
 }
 
 
-/* ========================================
-   RESPONSIVE
-======================================== */
+/* responsive */
 
 @media (max-width: 1350px) {
     .company-public-profile {

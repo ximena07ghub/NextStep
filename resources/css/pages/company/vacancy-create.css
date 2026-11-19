@@ -1,15 +1,11 @@
-/* ========================================
-   COMPANY VACANCY CREATE
-======================================== */
+/* company vacancy create */
 
 .company-vacancy-create {
     width: 100%;
 }
 
 
-/* ========================================
-   COMPANY VACANCY FORM
-======================================== */
+/* company vacancy form */
 
 .company-vacancy-form {
     width: 1298px;
@@ -27,9 +23,7 @@
 }
 
 
-/* ========================================
-   TITLE
-======================================== */
+/* title */
 
 .company-vacancy-form__title {
     width: 100%;
@@ -47,9 +41,7 @@
 }
 
 
-/* ========================================
-   MAIN
-======================================== */
+/* main */
 
 .company-vacancy-form__main {
     width: 100%;
@@ -62,9 +54,7 @@
 }
 
 
-/* ========================================
-   LEFT FIELDS
-======================================== */
+/* left fields */
 
 .company-vacancy-form__fields {
     width: 529px;
@@ -77,9 +67,7 @@
 }
 
 
-/* ========================================
-   GENERIC FIELD
-======================================== */
+/* generic field */
 
 .company-vacancy-form__field {
     width: 100%;
@@ -103,9 +91,7 @@
     line-height: 21px;
 }
 
-/* ========================================
-   REQUIRED
-======================================== */
+/* required */
 
 .company-vacancy-form__field label::after,
 .company-vacancy-form__description label::after {
@@ -117,9 +103,7 @@
     font-weight: 700;
 }
 
-/* ========================================
-   INPUT
-======================================== */
+/* input */
 
 .company-vacancy-form__input {
     width: 100%;
@@ -149,9 +133,7 @@
 }
 
 
-/* ========================================
-   LOCATION
-======================================== */
+/* location */
 
 .company-vacancy-form__input-icon-wrapper {
     width: 100%;
@@ -180,9 +162,7 @@
 }
 
 
-/* ========================================
-   DESCRIPTION
-======================================== */
+/* description */
 
 .company-vacancy-form__description {
     width: 626px;
@@ -218,9 +198,7 @@
 }
 
 
-/* ========================================
-   SALARY
-======================================== */
+/* salary */
 
 .company-vacancy-form__salary {
     width: 100%;
@@ -245,9 +223,7 @@
 }
 
 
-/* ========================================
-   SALARY FIELDS
-======================================== */
+/* salary fields */
 
 .company-vacancy-form__salary-fields {
     width: 100%;
@@ -262,9 +238,7 @@
     column-gap: 59px;
 }
 
-/* ========================================
-   BENEFITS
-======================================== */
+/* benefits */
 
 .company-vacancy-form__benefits {
     width: 100%;
@@ -349,9 +323,7 @@
 }
 
 
-/* ========================================
-   ACTIONS
-======================================== */
+/* actions */
 
 .company-vacancy-form__actions {
     width: 100%;
@@ -407,9 +379,7 @@
     color: #cd1100;
 }
 
-/* ========================================
-   EDIT ACTIONS
-======================================== */
+/* edit actions */
 
 .company-vacancy-form__action-button--cancel {
     width: 191px;
@@ -426,9 +396,7 @@
 }
 
 
-/* ========================================
-   RESPONSIVE
-======================================== */
+/* responsive */
 
 @media (max-width: 1380px) {
 

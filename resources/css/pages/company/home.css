@@ -1,6 +1,4 @@
-/* ========================================
-   COMPANY HOME
-======================================== */
+/* company home */
 
 .company-home {
     width: 100%;
@@ -22,9 +20,7 @@
 }
 
 
-/* ========================================
-   COMPANY SIDEBAR
-======================================== */
+/* company sidebar */
 
 .company-sidebar {
     width: 169px;
@@ -49,9 +45,7 @@
 }
 
 
-/* ========================================
-   SIDEBAR MENU
-======================================== */
+/* sidebar menu */
 
 .company-sidebar__menu {
     width: 135px;
@@ -64,9 +58,7 @@
 }
 
 
-/* ========================================
-   SIDEBAR ITEM
-======================================== */
+/* sidebar item */
 
 .company-sidebar__item {
     width: 100%;
@@ -98,9 +90,7 @@
 }
 
 
-/* ========================================
-   SIDEBAR ICON
-======================================== */
+/* sidebar icon */
 
 .company-sidebar__icon {
     width: 26px;
@@ -112,9 +102,7 @@
 }
 
 
-/* ========================================
-   HOVER
-======================================== */
+/* hover */
 
 .company-sidebar__item:hover {
     transform: translateX(4px);
@@ -123,18 +111,14 @@
 }
 
 
-/* ========================================
-   ACTIVE
-======================================== */
+/* active */
 
 .company-sidebar__item--active {
     color: #000;
 }
 
 
-/* ========================================
-   PUBLISH BUTTON
-======================================== */
+/* publish button */
 
 .company-publish-button {
     width: 78px;
@@ -174,9 +158,7 @@
 }
 
 
-/* ========================================
-   PUBLISH BUTTON ICON
-======================================== */
+/* publish button icon */
 
 .company-publish-button__icon {
     width: 23px;
@@ -190,9 +172,7 @@
 }
 
 
-/* ========================================
-   PUBLISH BUTTON TEXT
-======================================== */
+/* publish button text */
 
 .company-publish-button__text {
     max-width: 0;
@@ -220,9 +200,7 @@
         transform 0.35s ease;
 }
 
-/* ========================================
-   PUBLISH HOVER
-======================================== */
+/* publish hover */
 
 .company-publish-button:hover {
     width: 220px;
@@ -247,9 +225,7 @@
     transform: translateY(0);
 }
 
-/* ========================================
-   DASHBOARD CONTENT
-======================================== */
+/* dashboard content */
 
 .company-home__content {
     width: 100%;
@@ -258,9 +234,7 @@
 }
 
 
-/* ========================================
-   SECTION TITLE
-======================================== */
+/* section title */
 
 .company-section-title {
     margin: 40px 0 0 320px;
@@ -272,9 +246,7 @@
     color: #000;
 }
 
-/* ========================================
-   LEFT NAVIGATION
-======================================== */
+/* left navigation */
 
 .company-home__navigation {
     position: relative;
