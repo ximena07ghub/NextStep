@@ -2,9 +2,6 @@
 
     <div class="student-register__slider">
 
-        <!-- =========================================
-             DATOS PARA CREAR LA CUENTA
-        ========================================== -->
         <div
             class="student-register__step"
             data-student-step="data"
