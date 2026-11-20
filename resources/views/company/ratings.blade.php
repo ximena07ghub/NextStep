@@ -38,7 +38,7 @@
             @forelse ($reviews as $review)
                 <article class="company-ratings__review">
                     <div class="company-ratings__review-rating">
-                        <span aria-label="{{ $review->rating }} de 5 estrellas">{{ str_repeat('★', (int) $review->rating) }}{{ str_repeat('☆', 5 - (int) $review->rating) }}</span>
+                        <span class="company-ratings__review-rating-stars" aria-label="{{ $review->rating }} de 5 estrellas">{{ str_repeat('★', (int) $review->rating) }}{{ str_repeat('☆', 5 - (int) $review->rating) }}</span>
                         <time class="company-ratings__review-date" datetime="{{ $review->created_at?->format('Y-m-d') }}">
                             {{ $review->created_at?->format('d/m/Y') ?? 'Sin fecha' }}
                         </time>
