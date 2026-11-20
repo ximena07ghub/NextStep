@@ -84,6 +84,7 @@
                     <input
                         id="vacancy-title"
                         name="title"
+                        placeholder="Ej. Desarrollador Web Junior"
                         value="{{ old('title') }}"
                         type="text"
                         class="company-vacancy-form__input"
@@ -138,6 +139,7 @@
                         <input
                             id="vacancy-location"
                             name="location"
+                        placeholder="Ej. Monterrey, Nuevo León"
                             value="{{ old('location') }}"
                             type="text"
                             class="company-vacancy-form__input"
@@ -205,6 +207,7 @@
                             <input
                                 id="salary-fixed"
                                 name="salary_fixed"
+                        placeholder="Ej. 16000"
                                 type="number"
                                 min="1"
                                 value="{{ old('salary_fixed') }}"
@@ -263,6 +266,7 @@
                 <textarea
                     id="vacancy-description"
                     name="description"
+                    placeholder="Ej. Buscamos estudiantes de Ingeniería en Sistemas con conocimientos de HTML, CSS y JavaScript para desarrollar aplicaciones web y colaborar en proyectos reales."
                     required
                 >{{ old('description') }}</textarea>
 
