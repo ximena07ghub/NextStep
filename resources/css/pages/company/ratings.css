@@ -328,6 +328,12 @@
     gap: 14px;
 }
 
+.company-ratings__review-rating-stars {
+    font-size: 28px;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
 .company-ratings__review-stars {
     display: flex;
     align-items: center;
