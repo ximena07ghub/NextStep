@@ -13,7 +13,7 @@ class CompanyReviewController extends Controller
             'company_user_id' => 'required|string',
             'student_user_id' => 'required|string',
             'rating' => 'required|integer|min:1|max:5',
-            'review_description' => 'required|string|min:10|max:1500',
+            'review_title' => 'required|string|min:3|max:120',
         ]);
 
         $review = CompanyReview::create($validated);
@@ -30,7 +30,7 @@ class CompanyReviewController extends Controller
         $review = CompanyReview::findOrFail($id);
         $review->update($request->validate([
             'rating' => ['sometimes', 'required', 'integer', 'between:1,5'],
-            'review_description' => ['sometimes', 'required', 'string', 'min:10', 'max:1500'],
+            'review_title' => ['sometimes', 'required', 'string', 'min:3', 'max:120'],
         ]));
         return response()->json($review, 200);
     }
