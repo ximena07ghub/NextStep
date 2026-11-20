@@ -51,6 +51,7 @@
                 <input
                     id="company-name"
                     name="company_name"
+                    placeholder="Ej. TechNova Solutions"
                     maxlength="150"
                     value="{{ old('company_name') }}"
                     type="text"
@@ -75,6 +76,7 @@
                 <input
                     id="company-rfc"
                     name="rfc"
+                    placeholder="Ej. ABC010203AB1"
                     maxlength="12"
                     minlength="12"
                     pattern="[A-Za-zÑñ&]{3}[0-9]{6}[A-Za-z0-9]{3}"
@@ -149,6 +151,7 @@
                 <input
                     type="text"
                     name="custom_sector"
+                    placeholder="Ej. Consultoría tecnológica"
                     maxlength="100"
                     value="{{ old('custom_sector') }}"
                     class="
@@ -182,6 +185,7 @@
                     <input
                         id="company-state"
                         name="state"
+                    placeholder="Ej. Nuevo León"
                         maxlength="100"
                         value="{{ old('state') }}"
                         type="text"
@@ -209,6 +213,7 @@
                     <input
                         id="company-city"
                         name="city"
+                    placeholder="Ej. Monterrey"
                         maxlength="100"
                         value="{{ old('city') }}"
                         type="text"
@@ -235,6 +240,7 @@
                 <input
                     id="company-email"
                     name="email"
+                    placeholder="Ej. contacto@example.com"
                     maxlength="255"
                     value="{{ old('email') }}"
                     type="email"
@@ -261,6 +267,7 @@
                     <input
                         id="company-password"
                         name="password"
+                    placeholder="Mín. 8 caracteres, mayúscula y número"
                         minlength="8"
                         maxlength="72"
                         type="password"
@@ -305,6 +312,7 @@
                     <input
                         id="company-password-confirmation"
                         name="password_confirmation"
+                    placeholder="Repite tu contraseña"
                         minlength="8"
                         maxlength="72"
                         type="password"
