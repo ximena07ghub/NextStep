@@ -43,7 +43,7 @@
                             {{ $review->created_at?->format('d/m/Y') ?? 'Sin fecha' }}
                         </time>
                     </div>
-                    <p class="company-ratings__review-comment">{{ $review->review_description }}</p>
+                    <p class="company-ratings__review-comment">{{ $review->review_title ?: 'Valoración sin título' }}</p>
                 </article>
             @empty
                 <p class="company-ratings__empty">Aún no hay valoraciones registradas para tu empresa.</p>
