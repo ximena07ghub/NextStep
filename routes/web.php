@@ -8,6 +8,7 @@ use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\CompanyMembershipController;
 use App\Http\Controllers\CompanyRatingsController;
 use App\Http\Controllers\CompanyVacancyController;
+use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentVacancyController;
 use App\Http\Controllers\StudentCompanyReviewController;
@@ -217,6 +218,17 @@ Route::prefix('admin')
 
         Route::get('/reports', [AdminReportController::class, 'index'])
             ->name('reports.index');
+
+        // Administración de catálogo y consulta de operaciones (solo administrador).
+        Route::get('/memberships', [MembershipController::class, 'index'])->name('memberships.index');
+        Route::get('/memberships/create', [MembershipController::class, 'create'])->name('memberships.create');
+        Route::post('/memberships', [MembershipController::class, 'store'])->name('memberships.store');
+        Route::get('/memberships/{id}/edit', [MembershipController::class, 'edit'])->where('id', '[a-f0-9]{24}')->name('memberships.edit');
+        Route::put('/memberships/{id}', [MembershipController::class, 'update'])->where('id', '[a-f0-9]{24}')->name('memberships.update');
+        Route::delete('/memberships/{id}', [MembershipController::class, 'destroy'])->where('id', '[a-f0-9]{24}')->name('memberships.destroy');
+
+        Route::get('/payments', [AdminController::class, 'payments'])->name('payments.index');
+        Route::get('/payments/{id}', [AdminController::class, 'payment'])->where('id', '[a-f0-9]{24}')->name('payments.show');
 
 
         // muestra la lista de estudiantes
