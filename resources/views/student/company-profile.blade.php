@@ -126,7 +126,7 @@
             <form class="company-public-profile__review-form" method="POST" action="{{ route('student.companies.reviews.store', $company['id']) }}">
                 @csrf
                 <h3>Calificar esta empresa</h3>
-                <p>Comparte una calificación y un título respetuoso.</p>
+                <p>Comparte tu calificación y una valoración respetuosa.</p>
                 <label for="company-rating">Calificación</label>
                 <select id="company-rating" name="rating" required>
                     <option value="">Selecciona de 1 a 5 estrellas</option>
@@ -136,7 +136,7 @@
                 </select>
                 <label for="review-title">Valoración de empresa</label>
                 <input id="review-title" type="text" name="review_title" minlength="3" maxlength="120" value="{{ old('review_title') }}" required>
-                <p>Escribe un título de entre 3 y 120 caracteres.</p>
+                <p>Escribe una valoración de entre 3 y 120 caracteres.</p>
                 <button type="submit">Publicar valoración</button>
             </form>
         @else
