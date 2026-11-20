@@ -107,7 +107,12 @@ class CompanyMembershipController extends Controller
         }
 
         try {
-            $order = $paypal->captureOrder($data['token']);
+            $order = $paypal->getOrder($data['token']);
+        
+            if (($order['status'] ?? null) !== 'COMPLETED') {
+                $paypal->captureOrder($data['token']);
+                $order = $paypal->getOrder($data['token']);
+            }
         } catch (RuntimeException $e) {
             report($e);
             return redirect()->route('company.membership.change')->withErrors(['payment' => 'No se pudo confirmar el pago. Intenta regresar desde PayPal.']);
