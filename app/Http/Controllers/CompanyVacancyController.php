@@ -8,6 +8,7 @@ use App\Models\CompanyReview;
 use App\Models\Vacancy;
 use App\Models\Subscription;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Contracts\Cache\LockTimeoutException;
 use Illuminate\Http\Request;
 
 class CompanyVacancyController extends Controller
@@ -127,7 +128,8 @@ class CompanyVacancyController extends Controller
     {
         $companyId = (string) $request->user('web')->getKey();
 
-        return Cache::lock('nextstep:vacancy-quota:'.$companyId, 15)->block(5, function () use ($companyId, $publish) {
+        try {
+            return Cache::lock('nextstep:vacancy-quota:'.$companyId, 15)->block(5, function () use ($companyId, $publish) {
             $subscription = Subscription::where('company_user_id', $companyId)
                 ->where('payment_status', 'paid')
                 ->where('status', 'active')
@@ -151,7 +153,10 @@ class CompanyVacancyController extends Controller
             }
 
             return $publish();
-        });
+            });
+        } catch (LockTimeoutException $e) {
+            return back()->with('error', 'Hay otra publicación en proceso. Inténtalo nuevamente.');
+        }
     }
 
     public function store(Request $request)
@@ -176,6 +181,8 @@ class CompanyVacancyController extends Controller
         $vacancy = $this->owned($request, $id);
         abort_unless($vacancy->status === 'closed', 422);
         return $this->withPublicationQuota($request, function () use ($vacancy, $id) {
+            $vacancy->refresh();
+            abort_unless($vacancy->status === 'closed', 422);
             $months = $vacancy->stay_duration === '6 meses' ? 6 : 3;
             $vacancy->update([
                 'status' => 'published',
