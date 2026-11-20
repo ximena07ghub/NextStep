@@ -134,7 +134,7 @@
                         <option value="{{ $score }}" @selected(old('rating') == $score)>{{ $score }} {{ $score == 1 ? 'estrella' : 'estrellas' }}</option>
                     @endfor
                 </select>
-                <label for="review-title">Título de tu valoración</label>
+                <label for="review-title">Valoración de empresa</label>
                 <input id="review-title" type="text" name="review_title" minlength="3" maxlength="120" value="{{ old('review_title') }}" required>
                 <p>Escribe un título de entre 3 y 120 caracteres.</p>
                 <button type="submit">Publicar valoración</button>
@@ -144,7 +144,7 @@
         @endif
         @forelse ($reviews as $review)
             <article class="company-public-profile__review-card">
-                <p aria-label="{{ (int) $review->rating }} de 5 estrellas">{{ str_repeat('★', (int) $review->rating) }}{{ str_repeat('☆', max(0, 5 - (int) $review->rating)) }}</p>
+                <p class="company-public-profile__review-card-stars" aria-label="{{ (int) $review->rating }} de 5 estrellas">{{ str_repeat('★', (int) $review->rating) }}{{ str_repeat('☆', max(0, 5 - (int) $review->rating)) }}</p>
                 <p>{{ $review->review_title ?: 'Valoración sin título' }}</p>
                 <small>{{ $review->created_at?->format('d/m/Y') ?? 'Sin fecha' }}</small>
             </article>
