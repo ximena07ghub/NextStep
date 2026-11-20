@@ -37,7 +37,7 @@ class RegisterCompanyRequest extends FormRequest
     {
         return [
             'company_name' => ['required', 'string', 'max:150'],
-            'rfc' => ['required', 'string', 'regex:/^[A-ZÑ&]{3}[0-9]{6}[A-Z0-9]{3}$/u'],
+            'rfc' => ['required', 'string', 'regex:/^[A-ZÑ&]{3}[0-9]{6}[A-Z0-9]{3}$/u', Rule::unique(User::class, 'rfc')],
             'sector' => ['required', Rule::in([
                 'technology', 'health', 'education', 'finance', 'engineering',
                 'business', 'marketing', 'sales', 'rh', 'law', 'architecture',
@@ -82,6 +82,7 @@ class RegisterCompanyRequest extends FormRequest
             'required' => 'El campo :attribute es obligatorio.',
             'string' => 'El campo :attribute debe ser texto.',
             'max' => 'El campo :attribute no puede superar :max caracteres.',
+            'rfc.unique' => 'Este RFC ya está registrado por otra empresa.',
             'rfc.regex' => 'El RFC empresarial debe tener 12 caracteres: 3 letras, 6 números y 3 caracteres alfanuméricos. Ejemplo: ABC010203AB1.',
             'sector.in' => 'Selecciona uno de los sectores disponibles.',
             'email.email' => 'El correo electrónico no tiene un formato válido.',
