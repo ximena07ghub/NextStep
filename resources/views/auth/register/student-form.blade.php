@@ -59,6 +59,7 @@
                         <input
                             id="student-first-name"
                             name="first_name"
+                            placeholder="Ej. Carlos Alejandro"
                             maxlength="100"
                             value="{{ old('first_name') }}"
                             type="text"
@@ -83,6 +84,7 @@
                         <input
                             id="student-paternal-surname"
                             name="paternal_last_name"
+                            placeholder="Ej. Martínez"
                             maxlength="100"
                             value="{{ old('paternal_last_name') }}"
                             type="text"
@@ -107,6 +109,7 @@
                         <input
                             id="student-maternal-surname"
                             name="maternal_last_name"
+                            placeholder="Ej. López"
                             maxlength="100"
                             value="{{ old('maternal_last_name') }}"
                             type="text"
@@ -139,6 +142,7 @@
                                 <input
                                     id="student-birth-date"
                                     name="birth_date"
+                            placeholder="2004-03-15"
                                     value="{{ old('birth_date') }}"
                                     type="date"
                                     class="
@@ -175,6 +179,7 @@
                             <input
                                 id="student-phone"
                                 name="phone"
+                            placeholder="Ej. 8112345678"
                                 pattern="[0-9]{10}"
                                 minlength="10"
                                 maxlength="10"
@@ -204,6 +209,7 @@
                         <input
                             id="student-email"
                             name="email"
+                            placeholder="Ej. estudiante@example.com"
                             maxlength="255"
                             value="{{ old('email') }}"
                             type="email"
@@ -230,6 +236,7 @@
                             <input
                                 id="student-password"
                                 name="password"
+                            placeholder="Mín. 8 caracteres, mayúscula y número"
                                 minlength="8"
                                 maxlength="72"
                                 type="password"
@@ -274,6 +281,7 @@
                             <input
                                 id="student-password-confirmation"
                                 name="password_confirmation"
+                            placeholder="Repite tu contraseña"
                                 minlength="8"
                                 maxlength="72"
                                 type="password"
