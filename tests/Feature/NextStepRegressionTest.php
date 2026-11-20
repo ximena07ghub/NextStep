@@ -145,3 +145,83 @@ test('un estudiante no puede postularse dos veces a la misma vacante', function 
     $this->post($url, $payload)->assertRedirect();
     expect(Application::where('student_user_id', (string) $student->getKey())->count())->toBe(1);
 });
+
+test('un pago confirmado activa una vez y valida la empresa, plan e importe', function () {
+    $company = User::factory()->create(['role' => 'company']);
+    $reference = 'ORDER654321';
+    $purchase = Subscription::create([
+        'company_user_id' => (string) $company->getKey(),
+        'membership_id' => '507f191e810c19729de860ea',
+        'reference' => $reference,
+        'payment_method' => 'paypal',
+        'payment_status' => 'pending',
+        'status' => 'pending',
+        'amount' => 100,
+        'currency' => 'MXN',
+    ]);
+    $order = [
+        'id' => $reference,
+        'status' => 'COMPLETED',
+        'purchase_units' => [[
+            'custom_id' => (string) $company->getKey(),
+            'reference_id' => $purchase->membership_id,
+            'payments' => ['captures' => [[
+                'id' => 'CAPTURE123',
+                'status' => 'COMPLETED',
+                'amount' => ['currency_code' => 'MXN', 'value' => '100.00'],
+            ]]],
+        ]],
+    ];
+    $paypal = Mockery::mock(PayPalService::class);
+    $paypal->shouldReceive('getOrder')->once()->with($reference)->andReturn($order);
+    $paypal->shouldNotReceive('captureOrder');
+    $this->app->instance(PayPalService::class, $paypal);
+    $url = route('company.membership.paypal.return', ['token' => $reference]);
+    $this->actingAs($company, 'web')->get($url)->assertRedirect(route('company.membership'));
+    expect($purchase->fresh()->payment_status)->toBe('paid');
+    $startedAt = $purchase->fresh()->started_at;
+    $this->get($url)->assertRedirect(route('company.membership'));
+    expect($purchase->fresh()->started_at->equalTo($startedAt))->toBeTrue();
+});
+
+test('el pago de otra empresa o con importe incorrecto no activa la membresía', function () {
+    $company = User::factory()->create(['role' => 'company']);
+    $purchase = Subscription::create([
+        'company_user_id' => (string) $company->getKey(),
+        'membership_id' => '507f191e810c19729de860ea',
+        'reference' => 'ORDER888888',
+        'payment_method' => 'paypal',
+        'payment_status' => 'pending',
+        'status' => 'pending',
+        'amount' => 100,
+        'currency' => 'MXN',
+    ]);
+    $paypal = Mockery::mock(PayPalService::class);
+    $paypal->shouldReceive('getOrder')->once()->andReturn([
+        'id' => 'ORDER888888',
+        'status' => 'COMPLETED',
+        'purchase_units' => [[
+            'custom_id' => 'incorrect-company',
+            'reference_id' => $purchase->membership_id,
+            'payments' => ['captures' => [[
+                'id' => 'CAPTURE888',
+                'status' => 'COMPLETED',
+                'amount' => ['currency_code' => 'MXN', 'value' => '99.00'],
+            ]]],
+        ]],
+    ]);
+    $paypal->shouldNotReceive('captureOrder');
+    $this->app->instance(PayPalService::class, $paypal);
+    $this->actingAs($company, 'web')
+        ->get(route('company.membership.paypal.return', ['token' => 'ORDER888888']))
+        ->assertRedirect(route('company.membership.change'));
+    expect($purchase->fresh()->payment_status)->toBe('pending');
+});
+
+test('un plan ilimitado admite más de una vacante', function () {
+    $company = User::factory()->create(['role' => 'company']);
+    regressionSubscription($company, null);
+    $this->actingAs($company, 'web')->post(route('company.vacancies.store'), regressionVacancyFields())->assertRedirect();
+    $this->post(route('company.vacancies.store'), regressionVacancyFields())->assertRedirect();
+    expect(Vacancy::where('company_user_id', (string) $company->getKey())->where('status', 'published')->count())->toBe(2);
+});
