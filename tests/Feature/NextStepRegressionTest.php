@@ -225,3 +225,37 @@ test('un plan ilimitado admite más de una vacante', function () {
     $this->post(route('company.vacancies.store'), regressionVacancyFields())->assertRedirect();
     expect(Vacancy::where('company_user_id', (string) $company->getKey())->where('status', 'published')->count())->toBe(2);
 });
+
+test('cada plan respeta su cupo configurado en la compra', function (int $limit) {
+    $company = User::factory()->create(['role' => 'company']);
+    regressionSubscription($company, $limit);
+    $this->actingAs($company, 'web');
+
+    for ($i = 0; $i < $limit; $i++) {
+        $this->post(route('company.vacancies.store'), regressionVacancyFields())->assertRedirect();
+    }
+    expect(Vacancy::where('company_user_id', (string) $company->getKey())->where('status', 'published')->count())->toBe($limit);
+    $this->post(route('company.vacancies.store'), regressionVacancyFields())
+        ->assertRedirect(route('company.membership'));
+})->with([1, 2, 3]);
+
+test('la renovación de una vacante cerrada requiere vigencia y cupo', function () {
+    $company = User::factory()->create(['role' => 'company']);
+    regressionSubscription($company, 1);
+    $vacancy = Vacancy::create(regressionVacancyFields() + [
+        'company_user_id' => (string) $company->getKey(),
+        'status' => 'closed',
+        'published_at' => now()->subMonths(4),
+    ]);
+    $this->actingAs($company, 'web')
+        ->post(route('company.vacancies.renew', (string) $vacancy->getKey()))
+        ->assertRedirect();
+    expect($vacancy->fresh()->status)->toBe('published');
+
+    $vacancy->update(['status' => 'closed']);
+    Subscription::where('company_user_id', (string) $company->getKey())
+        ->update(['ended_at' => now()->subDay()]);
+    $this->post(route('company.vacancies.renew', (string) $vacancy->getKey()))
+        ->assertRedirect(route('company.membership'));
+    expect($vacancy->fresh()->status)->toBe('closed');
+});
