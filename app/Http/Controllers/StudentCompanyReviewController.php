@@ -19,9 +19,9 @@ class StudentCompanyReviewController extends Controller
         ], [
             'rating.required' => 'Selecciona una calificación.',
             'rating.between' => 'La calificación debe ser de 1 a 5 estrellas.',
-            'review_title.required' => 'Escribe un título para tu valoración.',
-            'review_title.min' => 'El título debe tener al menos 3 caracteres.',
-            'review_title.max' => 'El título no debe superar los 120 caracteres.',
+            'review_title.required' => 'Escribe tu valoración de empresa.',
+            'review_title.min' => 'La valoración debe tener al menos 3 caracteres.',
+            'review_title.max' => 'La valoración no debe superar los 120 caracteres.',
         ]);
 
         // solo una valoración por estudiante y empresa
