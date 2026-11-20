@@ -38,6 +38,29 @@
             <a class="admin-button admin-button--primary" href="{{ route('company.membership.change') }}">Ver planes</a>
         @endif
 
+        @if ($pendingOrders->isNotEmpty())
+            <section class="ns-order-history">
+                <h2>Pagos pendientes</h2>
+                <p>Si ya aprobaste una orden en PayPal, puedes consultar nuevamente su estado.
+                    Una orden sin confirmar no activa la membresía.</p>
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <thead><tr><th>Plan</th><th>Importe</th><th>Estado</th><th>Acción</th></tr></thead>
+                        <tbody>
+                            @foreach ($pendingOrders as $order)
+                                <tr>
+                                    <td>{{ $order->membership_name ?? 'Plan sin nombre' }}</td>
+                                    <td>${{ number_format($order->amount, 2) }} {{ $order->currency ?? 'MXN' }}</td>
+                                    <td>Pendiente</td>
+                                    <td><a class="admin-link" href="{{ route('company.membership.paypal.return', ['token' => $order->reference]) }}">Comprobar pago</a></td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        @endif
+
         <section class="ns-order-history">
             <h2>Compras confirmadas</h2>
             <div class="admin-table-wrap">

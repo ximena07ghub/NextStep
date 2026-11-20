@@ -17,17 +17,22 @@ class CompanyMembershipController extends Controller
             ->where('payment_status', 'paid')->where('status', 'active')
             ->where('started_at', '<=', now())->where('ended_at', '>', now())->latest('started_at')->first();
 
+        $pendingOrders = Subscription::where('company_user_id', $companyId)
+            ->where('payment_method', 'paypal')->where('payment_status', 'pending')
+            ->latest()->take(10)->get();
+
         $orders = Subscription::where('company_user_id', $companyId)
             ->where('payment_status', 'paid')->latest()->paginate(10)->withQueryString();
 
         if ($request->expectsJson() || $request->is('api/*')) {
             return response()->json([
                 'current_subscription' => $currentSubscription?->summary($request->user('web')),
+                'pending_orders' => $pendingOrders->map(fn ($order) => $order->summary($request->user('web'))),
                 'orders' => $orders->through(fn ($order) => $order->summary($request->user('web'))),
             ]);
         }
 
-        return view('company.membership', compact('currentSubscription', 'orders'));
+        return view('company.membership', compact('currentSubscription', 'orders', 'pendingOrders'));
     }
 
     public function catalog(): mixed
@@ -108,14 +113,25 @@ class CompanyMembershipController extends Controller
 
         try {
             $order = $paypal->getOrder($data['token']);
-        
-            if (($order['status'] ?? null) !== 'COMPLETED') {
+            $status = $order['status'] ?? null;
+
+            // Solo capturar órdenes realmente aprobadas; CREATED/SAVED/PAYER_ACTION_REQUIRED
+            // no son autorización de cobro y deben seguir pendientes.
+            if ($status === 'APPROVED') {
                 $paypal->captureOrder($data['token']);
                 $order = $paypal->getOrder($data['token']);
+            } elseif ($status === 'VOIDED') {
+                $purchase->update(['payment_status' => 'cancelled', 'status' => 'cancelled']);
+                return redirect()->route('company.membership.change')
+                    ->withErrors(['payment' => 'La orden fue cancelada. No se activó ninguna membresía.']);
+            } elseif ($status !== 'COMPLETED') {
+                return redirect()->route('company.membership.change')
+                    ->withErrors(['payment' => 'El pago aún está pendiente de aprobación en PayPal.']);
             }
         } catch (RuntimeException $e) {
             report($e);
-            return redirect()->route('company.membership.change')->withErrors(['payment' => 'No se pudo confirmar el pago. Intenta regresar desde PayPal.']);
+            return redirect()->route('company.membership.change')
+                ->withErrors(['payment' => 'No se pudo verificar el pago. Puedes volver a consultar la orden más tarde.']);
         }
 
         $unit = $order['purchase_units'][0] ?? [];
