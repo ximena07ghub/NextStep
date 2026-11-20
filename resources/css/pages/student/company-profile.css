@@ -682,6 +682,7 @@
 .company-public-profile__review-card { padding: 20px; border: 1px solid #dedede; border-radius: 16px; overflow-wrap: anywhere; }
 .company-public-profile__review-card h3 { margin: 8px 0; }
 .company-public-profile__review-card p { line-height: 1.5; }
+.company-public-profile__review-card-stars { font-size: 28px; letter-spacing: 1px; line-height: 1.2; }
 .company-public-profile__review-card small { color: #666; }
 .company-public-profile__empty { grid-column: 1 / -1; text-align: center; color: #555; }
 @media (max-width: 1300px) {
