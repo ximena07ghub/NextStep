@@ -36,7 +36,7 @@ class RegisterStudentRequest extends FormRequest
             'paternal_last_name' => ['required', 'string', 'max:100'],
             'maternal_last_name' => ['required', 'string', 'max:100'],
             'birth_date' => ['required', 'date_format:Y-m-d', 'before:today'],
-            'phone' => ['required', 'string', 'regex:/^[0-9]{10}$/'],
+            'phone' => ['required', 'string', 'regex:/^[0-9]{10}$/', Rule::unique(User::class, 'phone')],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class, 'email')],
             'password' => [
                 'bail', 'required', 'string', 'max:72', 'confirmed',
@@ -73,6 +73,7 @@ class RegisterStudentRequest extends FormRequest
             'max' => 'El campo :attribute no puede superar :max caracteres.',
             'birth_date.date_format' => 'La fecha de nacimiento debe tener el formato AAAA-MM-DD.',
             'birth_date.before' => 'La fecha de nacimiento debe ser anterior a hoy.',
+            'phone.unique' => 'Este número de teléfono ya está registrado.',
             'phone.regex' => 'Escribe un número de México de 10 dígitos, sin espacios ni +52.',
             'email.email' => 'El correo electrónico no tiene un formato válido.',
             'email.unique' => 'Ya existe una cuenta con este correo electrónico.',
