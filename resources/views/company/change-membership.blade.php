@@ -45,8 +45,8 @@
         <div class="ns-catalog__checkout">
             <label for="billing-email">Correo para el comprobante</label>
             <input id="billing-email" name="billing_email" type="email" required maxlength="254" value="{{ old('billing_email', auth('web')->user()->email) }}">
-            <p>El pago se procesa de forma segura en Stripe. La membresía se activará cuando Stripe confirme el cobro.</p>
-            <button class="admin-button admin-button--primary" type="submit">Continuar al pago</button>
+            <p>El pago único se procesa con PayPal. No hay renovación automática. La membresía se activa cuando PayPal confirma el cobro.</p>
+            <button class="admin-button admin-button--primary" type="submit">Pagar con PayPal</button>
         </div>
         </form>
     </div>

@@ -188,6 +188,9 @@ Route::prefix('company')
         Route::get('/membership/change', [CompanyMembershipController::class, 'catalog'])
             ->name('membership.change');
 
+        Route::get('/membership/paypal/return', [CompanyMembershipController::class, 'paypalReturn'])
+            ->name('membership.paypal.return');
+
         Route::post('/membership/checkout', [CompanyMembershipController::class, 'checkout'])
             ->middleware('throttle:5,1')->name('membership.checkout');
 

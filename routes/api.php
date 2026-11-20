@@ -6,14 +6,10 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\CompanyMembershipController;
 use App\Http\Controllers\CompanyReviewController;
 use App\Http\Controllers\MembershipController;
-use App\Http\Controllers\StripeWebhookController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VacancyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-// stripe envía el aviso de pago sin iniciar sesión en nextstep.
-Route::post('/stripe/webhook', [StripeWebhookController::class, 'handle']);
 
 // postman utiliza cookies de sesión y x-csrf-token, igual que los formularios web.
 Route::middleware('web')->group(function () {
